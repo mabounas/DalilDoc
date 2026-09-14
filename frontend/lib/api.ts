@@ -78,4 +78,8 @@ export const getVoiceCapabilities = (): Promise<VoiceCapabilities> => {
 };
 
 export const synthesize = (text: string, langue: Lang) =>
-  post<{ audio: string; mime_type: string }>("/api/v1/voice/synthesize", { text, langue, borne_id: BORNE_ID }, 15000);
+  post<{ audio: string; mime_type: string; cached?: boolean }>(
+    "/api/v1/voice/synthesize",
+    { text, langue, borne_id: BORNE_ID },
+    45000, // première génération d'une longue réponse arabe ; ensuite servie depuis le cache
+  );

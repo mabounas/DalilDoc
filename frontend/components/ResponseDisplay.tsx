@@ -28,6 +28,7 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
   const rtl = isRtl(lang);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [voiceMissing, setVoiceMissing] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false);
 
   const speak = useCallback(async () => {
     const text = spokenText(result, lang);
@@ -40,15 +41,24 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
       serverTts = false;
     }
     if (serverTts) {
+      let el: HTMLAudioElement | null = null;
       try {
         const { audio, mime_type } = await synthesize(text.slice(0, 2000), lang);
-        const el = new Audio(`data:${mime_type};base64,${audio}`);
-        audioRef.current = el;
-        await el.play();
-        setVoiceMissing(false);
-        return;
+        el = new Audio(`data:${mime_type};base64,${audio}`);
       } catch {
-        // ElevenLabs en échec : repli sur les voix du navigateur.
+        el = null; // ElevenLabs en échec : repli sur les voix du navigateur.
+      }
+      if (el) {
+        audioRef.current = el;
+        setVoiceMissing(false);
+        try {
+          await el.play();
+          setNeedsTap(false);
+        } catch {
+          // Lecture automatique bloquée par le navigateur : l'audio est prêt, « Répéter » le lira.
+          setNeedsTap(true);
+        }
+        return;
       }
     }
     // Uniquement une voix de la bonne langue : pas de lecture arabe par une voix française.
@@ -120,7 +130,12 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
       )}
 
       <div className="no-print mt-auto grid grid-cols-3 gap-4">
-        <button onClick={speak} className="min-h-[72px] rounded-2xl bg-night-700 text-xl active:bg-night-600">🔊 {t.repeat}</button>
+        <button
+          onClick={speak}
+          className={`min-h-[72px] rounded-2xl text-xl active:bg-night-600 ${needsTap ? "animate-pulse bg-mint text-night" : "bg-night-700"}`}
+        >
+          🔊 {t.repeat}
+        </button>
         <button onClick={onNewQuestion} className="min-h-[72px] rounded-2xl bg-gold text-xl font-semibold text-night active:bg-gold-light">
           {t.newQuestion}
         </button>

@@ -158,6 +158,22 @@ test("ResponseDisplay lit les documents à voix haute", async () => {
   expect(spokenText(RESULT, "fr")).toContain("2. Quatre photographies");
 });
 
+test("Lecture bloquée par le navigateur : pas de faux message « voix indisponible », Répéter la relance", async () => {
+  const play = jest.fn().mockRejectedValueOnce(new Error("NotAllowedError")).mockResolvedValue(undefined);
+  (global as unknown as { Audio: unknown }).Audio = jest.fn().mockImplementation(() => ({ play, pause: jest.fn() }));
+  mockedSynthesize.mockResolvedValue({ audio: "AAAA", mime_type: "audio/mpeg" });
+
+  render(<ResponseDisplay result={RESULT} lang="darija" question="ضاعت ليا لاكارط" onNewQuestion={jest.fn()} />);
+  await waitFor(() => expect(play).toHaveBeenCalledTimes(1));
+  const repeat = screen.getByRole("button", { name: /عاود/ });
+  await waitFor(() => expect(repeat.className).toContain("animate-pulse"));
+  expect(screen.queryByText(/القراءة بالصوت ما متوفراش/)).toBeNull();
+
+  await act(async () => fireEvent.click(repeat));
+  await waitFor(() => expect(play).toHaveBeenCalledTimes(2));
+  await waitFor(() => expect(repeat.className).not.toContain("animate-pulse"));
+});
+
 test("IdleScreen reset après 30s inactivité", () => {
   jest.useFakeTimers();
   const onIdle = jest.fn();

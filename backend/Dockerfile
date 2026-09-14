@@ -12,7 +12,9 @@ COPY data/knowledge/ data/knowledge/
 COPY backend/ backend/
 
 WORKDIR /srv/backend
-RUN useradd --create-home --uid 1000 wathiqa && chown -R wathiqa /srv
+# /srv/cache/tts : volume du cache audio (créé ici pour appartenir à l'utilisateur applicatif).
+RUN useradd --create-home --uid 1000 wathiqa && mkdir -p /srv/cache/tts && chown -R wathiqa /srv
+ENV TTS_CACHE_DIR=/srv/cache/tts
 USER wathiqa
 
 EXPOSE 8000

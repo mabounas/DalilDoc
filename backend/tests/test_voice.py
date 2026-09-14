@@ -62,3 +62,52 @@ def test_stt_sans_cle(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     with pytest.raises(stt.STTUnavailable):
         stt.STTService()
+
+
+class _FakeResponse:
+    content = b"ID3-fake-mp3"
+
+    def raise_for_status(self):
+        return None
+
+
+def test_tts_cache_une_seule_generation(monkeypatch, tmp_path):
+    """Même réponse, même langue : ElevenLabs n'est appelé qu'une fois, ensuite le cache sert."""
+    calls = []
+    monkeypatch.setattr(tts.httpx, "post", lambda url, **kw: calls.append((url, kw["json"]["text"])) or _FakeResponse())
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "test-key")
+    monkeypatch.setenv("TTS_CACHE_DIR", str(tmp_path))
+    for key in ("ELEVENLABS_VOICE_DARIJA", "ELEVENLABS_VOICE_AR", "ELEVENLABS_VOICE_DEFAULT"):
+        monkeypatch.delenv(key, raising=False)
+
+    first = tts.synthesize_cached("لاكارط الوطنية — ضاعت", "darija")
+    second = tts.synthesize_cached("لاكارط  الوطنية — ضاعت", "darija")  # espaces différents : même audio
+    assert first == (b"ID3-fake-mp3", False)
+    assert second == (b"ID3-fake-mp3", True)
+    assert len(calls) == 1
+
+    tts.synthesize_cached("لاكارط الوطنية — ضاعت", "ar")  # autre langue → autre audio
+    monkeypatch.setenv("ELEVENLABS_VOICE_DARIJA", "voix-marocaine")
+    tts.synthesize_cached("لاكارط الوطنية — ضاعت", "darija")  # nouvelle voix → régénéré
+    assert len(calls) == 3
+
+    # Le cache sert même si la clé est retirée ensuite (borne toujours parlante).
+    monkeypatch.delenv("ELEVENLABS_API_KEY")
+    assert tts.synthesize_cached("لاكارط الوطنية — ضاعت", "ar")[1] is True
+
+
+def test_tts_cache_plafond(monkeypatch, tmp_path):
+    monkeypatch.setattr(tts.httpx, "post", lambda url, **kw: _FakeResponse())
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "test-key")
+    monkeypatch.setenv("TTS_CACHE_DIR", str(tmp_path))
+    monkeypatch.setenv("TTS_CACHE_MAX_FILES", "3")
+    for i in range(6):
+        tts.synthesize_cached(f"réponse {i}", "fr")
+    assert len(list(tmp_path.glob("*.mp3"))) == 3
+
+
+def test_tts_sans_cache_ni_cle(monkeypatch):
+    monkeypatch.delenv("ELEVENLABS_API_KEY", raising=False)
+    monkeypatch.delenv("TTS_CACHE_DIR", raising=False)
+    with pytest.raises(tts.TTSUnavailable):
+        tts.synthesize_cached("Bonjour", "fr")

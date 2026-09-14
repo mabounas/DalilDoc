@@ -44,6 +44,9 @@ services:
       QDRANT_URL: http://qdrant:6333
       REDIS_URL: redis://redis:6379
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3001}
+    volumes:
+      # Cache audio ElevenLabs : chaque réponse n'est générée qu'une fois (survit aux redéploiements).
+      - tts_cache:/srv/cache/tts
     depends_on:
       postgres:
         condition: service_healthy
@@ -82,3 +85,4 @@ volumes:
   pgdata:
   qdrant_storage:
   redis_data:
+  tts_cache:

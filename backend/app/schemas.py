@@ -59,6 +59,7 @@ class SynthesizeRequest(BaseModel):
 class SynthesizeResponse(BaseModel):
     audio: str
     mime_type: str = "audio/mpeg"
+    cached: bool = False
 
 
 class DemarcheSummary(BaseModel):

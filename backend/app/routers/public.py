@@ -78,13 +78,15 @@ def transcribe(req: TranscribeRequest) -> TranscribeResponse:
 
 @router.post("/voice/synthesize", response_model=SynthesizeResponse)
 def synthesize(req: SynthesizeRequest) -> SynthesizeResponse:
-    """ElevenLabs TTS : texte → audio MP3 base64."""
+    """ElevenLabs TTS : texte → audio MP3 base64 (servi depuis le cache si déjà généré)."""
     enforce_rate_limit("tts", req.borne_id)
     try:
-        audio = tts.synthesize(req.text, req.langue)
+        audio, cached = tts.synthesize_cached(req.text, req.langue)
     except tts.TTSUnavailable as exc:
+        log.warning("Synthèse vocale indisponible : %s", exc)
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, str(exc)) from exc
-    return SynthesizeResponse(audio=base64.b64encode(audio).decode())
+    log.info("TTS %s : %d caractères, %s", req.langue, len(req.text), "cache" if cached else "ElevenLabs")
+    return SynthesizeResponse(audio=base64.b64encode(audio).decode(), cached=cached)
 
 
 @router.get("/demarches", response_model=list[DemarcheSummary])
