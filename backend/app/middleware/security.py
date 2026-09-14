@@ -117,7 +117,8 @@ rate_limiter = RateLimiter(settings.redis_url)
 
 def enforce_rate_limit(kind: str, borne_id: str) -> None:
     """Lève HTTP 429 si la borne dépasse son quota pour ce type d'appel."""
-    limit = settings.rate_limit_audio_per_min if kind == "audio" else settings.rate_limit_queries_per_min
+    limits = {"audio": settings.rate_limit_audio_per_min, "tts": settings.rate_limit_tts_per_min}
+    limit = limits.get(kind, settings.rate_limit_queries_per_min)
     if not rate_limiter.hit(f"{kind}:{borne_id}", limit):
         raise HTTPException(status.HTTP_429_TOO_MANY_REQUESTS, detail="Trop de requêtes, réessayez dans une minute.")
 

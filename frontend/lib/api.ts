@@ -77,6 +77,13 @@ export const getVoiceCapabilities = (): Promise<VoiceCapabilities> => {
   return capsCache.promise;
 };
 
+/** Phrases à lire pour une démarche (titre, en-tête, documents), synthétisées une à une. */
+export const getSpokenSegments = async (demarcheId: string, langue: Lang): Promise<{ segments: string[] }> => {
+  const res = await fetch(`${API_URL}/api/v1/voice/segments?demarche_id=${encodeURIComponent(demarcheId)}&langue=${langue}`);
+  if (!res.ok) throw new ApiError(res.status, await res.text());
+  return (await res.json()) as { segments: string[] };
+};
+
 export const synthesize = (text: string, langue: Lang) =>
   post<{ audio: string; mime_type: string; cached?: boolean }>(
     "/api/v1/voice/synthesize",

@@ -142,3 +142,48 @@ def synthesize_cached(text: str, langue: str) -> tuple[bytes, bool]:
 def synthesize(text: str, langue: str) -> bytes:
     """Synthétise ``text`` et retourne l'audio MP3 (avec cache)."""
     return synthesize_cached(text, langue)[0]
+
+
+# ── Lecture découpée phrase par phrase ──────────────────────────────────────
+# La borne lit une réponse en plusieurs courts audios (titre, en-tête, chaque document) :
+# la première phrase part en ~1 s au lieu d'attendre toute la réponse, et les documents
+# communs à plusieurs démarches (certificat de résidence, photos…) sont mis en cache une fois.
+
+SPOKEN_HEADERS = {  # identiques à T[lang].requiredDocs de la borne (frontend/lib/i18n.ts)
+    "fr": "Documents à fournir", "ar": "الوثائق المطلوبة", "darija": "الوراق اللي خاصك",
+    "en": "Required documents", "pt": "Documentos exigidos", "es": "Documentos requeridos",
+}
+
+
+def _localized(value, langue: str) -> str | None:
+    if not value:
+        return None
+    if isinstance(value, str):
+        return value
+    for lg in (langue, *(("ar", "fr") if langue == "darija" else ("fr",))):
+        if value.get(lg):
+            return value[lg]
+    return None
+
+
+def spoken_segments(demarche: dict, langue: str) -> list[str]:
+    """Phrases lues pour une démarche : titre, en-tête « documents », puis chaque document numéroté."""
+    from rag.generator import documents_for
+
+    segments: list[str] = []
+    titre = _localized(demarche.get("titres"), langue)
+    if titre:
+        segments.append(titre)
+    docs = [d for d in documents_for(demarche, langue) if d.get("nom")]
+    if docs:
+        segments.append(SPOKEN_HEADERS.get(langue, SPOKEN_HEADERS["fr"]))
+        segments += [f"{d.get('ordre') or i}. {d['nom']}" for i, d in enumerate(docs, 1)]
+    return segments
+
+
+def is_cached(text: str, langue: str) -> bool:
+    """Vrai si l'audio de ce texte est déjà en cache (lecture gratuite et instantanée)."""
+    directory = _cache_dir()
+    if directory is None:
+        return False
+    return (directory / f"{cache_key(text, langue, voice_for(langue), _model())}.mp3").exists()

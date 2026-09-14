@@ -111,3 +111,38 @@ def test_tts_sans_cache_ni_cle(monkeypatch):
     monkeypatch.delenv("TTS_CACHE_DIR", raising=False)
     with pytest.raises(tts.TTSUnavailable):
         tts.synthesize_cached("Bonjour", "fr")
+
+
+def test_phrases_lues_darija():
+    """Titre, en-tête puis documents numérotés, dans la langue de la borne."""
+    import json
+    from pathlib import Path as _P
+
+    kb = json.loads((_P(__file__).resolve().parents[2] / "data" / "knowledge" / "cin.json").read_text(encoding="utf-8"))
+    perte = next(d for d in kb["demarches"] if d["slug"] == "cin-perte-vol-deterioration")
+    segs = tts.spoken_segments(perte, "darija")
+    assert segs[0] == perte["titres"]["darija"]
+    assert segs[1] == "الوراق اللي خاصك"
+    assert segs[2].startswith("1. تصريح بالشرف")
+    assert len(segs) == 2 + len(perte["documents"])
+
+
+def test_endpoint_segments_et_cache_hors_limite(client, monkeypatch, tmp_path):
+    monkeypatch.setattr(tts.httpx, "post", lambda url, **kw: _FakeResponse())
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "test-key")
+    monkeypatch.setenv("TTS_CACHE_DIR", str(tmp_path))
+
+    r = client.get("/api/v1/voice/segments", params={"demarche_id": "cin-premiere-demande", "langue": "darija"})
+    assert r.status_code == 200 and r.json()["segments"][1] == "الوراق اللي خاصك"
+    assert client.get("/api/v1/voice/segments", params={"demarche_id": "inconnue", "langue": "fr"}).status_code == 404
+
+    body = {"text": "Documents à fournir", "langue": "fr", "borne_id": "cache-rl"}
+    assert client.post("/api/v1/voice/synthesize", json=body).json()["cached"] is False
+    import dataclasses
+
+    from app.middleware import security
+
+    monkeypatch.setattr(security, "settings", dataclasses.replace(security.settings, rate_limit_tts_per_min=1))
+    for _ in range(5):  # déjà en cache : jamais bloqué par la limite de débit
+        r = client.post("/api/v1/voice/synthesize", json=body)
+        assert r.status_code == 200 and r.json()["cached"] is True

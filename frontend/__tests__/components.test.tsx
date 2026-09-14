@@ -12,10 +12,13 @@ jest.mock("@/lib/api", () => ({
   synthesize: jest.fn(),
   transcribe: jest.fn(),
   getVoiceCapabilities: jest.fn(),
+  getSpokenSegments: jest.fn(),
 }));
 const mockedSynthesize = api.synthesize as jest.MockedFunction<typeof api.synthesize>;
 const mockedTranscribe = api.transcribe as jest.MockedFunction<typeof api.transcribe>;
 const mockedCaps = api.getVoiceCapabilities as jest.MockedFunction<typeof api.getVoiceCapabilities>;
+const mockedSegments = api.getSpokenSegments as jest.MockedFunction<typeof api.getSpokenSegments>;
+const SEGMENTS = ["CNIE — première demande", "Documents à fournir", "1. Certificat de résidence", "2. Quatre photographies d'identité"];
 
 const push = jest.fn();
 jest.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
@@ -43,6 +46,7 @@ beforeEach(() => {
   mockedSynthesize.mockReset();
   mockedTranscribe.mockReset();
   mockedCaps.mockReset().mockResolvedValue({ stt: true, tts: true });
+  mockedSegments.mockReset().mockResolvedValue({ segments: SEGMENTS });
   push.mockReset();
 });
 
@@ -146,15 +150,27 @@ test("TextInput supporte la saisie RTL arabe", () => {
   expect(onSubmit).toHaveBeenCalledWith("وثائق البطاقة الوطنية");
 });
 
-test("ResponseDisplay lit les documents à voix haute", async () => {
-  const play = jest.fn().mockResolvedValue(undefined);
-  (global as unknown as { Audio: unknown }).Audio = jest.fn().mockImplementation(() => ({ play, pause: jest.fn() }));
-  const synth = mockedSynthesize.mockResolvedValue({ audio: "AAAA", mime_type: "audio/mpeg" });
+test("ResponseDisplay lit la réponse phrase par phrase, dans l'ordre", async () => {
+  const played: string[] = [];
+  (global as unknown as { Audio: unknown }).Audio = jest.fn().mockImplementation((src: string) => {
+    const el: { onpause?: () => void; play: () => Promise<void>; pause: jest.Mock } = {
+      pause: jest.fn(),
+      play: () => {
+        played.push(src);
+        setTimeout(() => el.onpause?.(), 0); // fin de la phrase
+        return Promise.resolve();
+      },
+    };
+    return el;
+  });
+  const synth = mockedSynthesize.mockImplementation(async (text) => ({ audio: btoa(unescape(encodeURIComponent(text))), mime_type: "audio/mpeg" }));
 
   render(<ResponseDisplay result={RESULT} lang="fr" question="Documents CIN" onNewQuestion={jest.fn()} />);
   expect(screen.getByText("Certificat de résidence")).toBeInTheDocument();
-  await waitFor(() => expect(synth).toHaveBeenCalledWith(expect.stringContaining("1. Certificat de résidence"), "fr"));
-  await waitFor(() => expect(play).toHaveBeenCalled());
+  await waitFor(() => expect(played).toHaveLength(SEGMENTS.length));
+  expect(synth).toHaveBeenCalledWith("1. Certificat de résidence", "fr");
+  expect(played[0]).toContain(btoa(unescape(encodeURIComponent(SEGMENTS[0]))));
+  expect(played[3]).toContain(btoa(unescape(encodeURIComponent(SEGMENTS[3]))));
   expect(spokenText(RESULT, "fr")).toContain("2. Quatre photographies");
 });
 

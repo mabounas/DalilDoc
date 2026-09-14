@@ -2,7 +2,7 @@
 
 import { QRCodeSVG } from "qrcode.react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getVoiceCapabilities, synthesize, type QueryResult } from "@/lib/api";
+import { getSpokenSegments, getVoiceCapabilities, synthesize, type QueryResult } from "@/lib/api";
 import { isRtl, T, type Lang } from "@/lib/i18n";
 import { speakWithBrowser, stopSpeaking } from "@/lib/speech";
 
@@ -22,6 +22,37 @@ export function spokenText(result: QueryResult, lang: Lang): string {
   return `${result.reponse.split("\n")[0]}${sep}${t.requiredDocs} : ${docs}`;
 }
 
+/**
+ * Lance la synthèse de toutes les phrases (3 en parallèle, dans l'ordre) et renvoie
+ * une promesse d'URL audio par phrase : la lecture commence dès que la première est prête.
+ */
+function synthesizeAll(segments: string[], lang: Lang, concurrency = 3): Promise<string>[] {
+  const slots = segments.map(() => {
+    let resolve!: (v: string) => void;
+    let reject!: (e: unknown) => void;
+    const promise = new Promise<string>((res, rej) => {
+      resolve = res;
+      reject = rej;
+    });
+    promise.catch(() => undefined);
+    return { promise, resolve, reject };
+  });
+  let next = 0;
+  const worker = async () => {
+    while (next < segments.length) {
+      const i = next++;
+      try {
+        const { audio, mime_type } = await synthesize(segments[i].slice(0, 2000), lang);
+        slots[i].resolve(`data:${mime_type};base64,${audio}`);
+      } catch (e) {
+        slots[i].reject(e);
+      }
+    }
+  };
+  for (let w = 0; w < Math.min(concurrency, segments.length); w++) void worker();
+  return slots.map((s) => s.promise);
+}
+
 /** Affiche la réponse (≥ 24px), la lit à voix haute et propose Répéter / Nouvelle question / Imprimer. */
 export default function ResponseDisplay({ result, lang, question, onNewQuestion }: Props) {
   const t = T[lang];
@@ -30,7 +61,10 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
   const [voiceMissing, setVoiceMissing] = useState(false);
   const [needsTap, setNeedsTap] = useState(false);
 
+  const runRef = useRef(0);
+
   const speak = useCallback(async () => {
+    const run = ++runRef.current;
     const text = spokenText(result, lang);
     audioRef.current?.pause();
     stopSpeaking();
@@ -41,33 +75,54 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
       serverTts = false;
     }
     if (serverTts) {
-      let el: HTMLAudioElement | null = null;
-      try {
-        const { audio, mime_type } = await synthesize(text.slice(0, 2000), lang);
-        el = new Audio(`data:${mime_type};base64,${audio}`);
-      } catch {
-        el = null; // ElevenLabs en échec : repli sur les voix du navigateur.
+      // Découpage en phrases fourni par l'API (identique au pré-chargement du cache).
+      let segments = [text];
+      if (result.demarche_id && result.documents.length && !result.hors_perimetre) {
+        try {
+          const { segments: fromApi } = await getSpokenSegments(result.demarche_id, lang);
+          if (fromApi?.length) segments = fromApi;
+        } catch {
+          segments = [text];
+        }
       }
-      if (el) {
+      const audios = synthesizeAll(segments, lang);
+      let played = 0;
+      for (const pending of audios) {
+        let src: string;
+        try {
+          src = await pending;
+        } catch {
+          break; // ElevenLabs en échec sur cette phrase : on s'arrête (repli si rien n'a été lu)
+        }
+        if (run !== runRef.current) return; // nouvelle lecture ou écran quitté
+        const el = new Audio(src);
         audioRef.current = el;
-        setVoiceMissing(false);
         try {
           await el.play();
-          setNeedsTap(false);
         } catch {
           // Lecture automatique bloquée par le navigateur : l'audio est prêt, « Répéter » le lira.
           setNeedsTap(true);
+          return;
         }
-        return;
+        setNeedsTap(false);
+        setVoiceMissing(false);
+        await new Promise<void>((done) => {
+          el.onpause = () => done(); // fin de phrase (ou lecture interrompue)
+          el.onerror = () => done();
+        });
+        if (run !== runRef.current) return;
+        played++;
       }
+      if (played > 0) return;
     }
     // Uniquement une voix de la bonne langue : pas de lecture arabe par une voix française.
-    setVoiceMissing(!(await speakWithBrowser(text, lang)));
+    if (run === runRef.current) setVoiceMissing(!(await speakWithBrowser(text, lang)));
   }, [result, lang]);
 
   useEffect(() => {
     speak();
     return () => {
+      runRef.current++;
       audioRef.current?.pause();
       stopSpeaking();
     };

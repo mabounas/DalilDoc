@@ -34,6 +34,8 @@ class Settings:
 
     rate_limit_queries_per_min: int = int(os.getenv("RATE_LIMIT_QUERIES", "30"))
     rate_limit_audio_per_min: int = int(os.getenv("RATE_LIMIT_AUDIO", "5"))
+    # Une réponse est lue en ~10 phrases : générations ElevenLabs par minute et par borne.
+    rate_limit_tts_per_min: int = int(os.getenv("RATE_LIMIT_TTS", "120"))
     cors_origins: list[str] = field(default_factory=lambda: _list("CORS_ORIGINS", "http://localhost:3000,http://localhost:3001"))
 
 

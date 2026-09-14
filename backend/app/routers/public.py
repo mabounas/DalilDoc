@@ -54,6 +54,17 @@ def voice_capabilities() -> dict:
     return {"stt": bool(os.getenv("OPENAI_API_KEY")), "tts": bool(os.getenv("ELEVENLABS_API_KEY"))}
 
 
+@router.get("/voice/segments")
+def voice_segments(demarche_id: str, langue: str = "fr") -> dict:
+    """Phrases à lire pour une démarche (titre, en-tête, documents), synthétisées une à une."""
+    if langue not in LANGS:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Langue non supportée")
+    d = rag_holder.get().demarches.get(demarche_id)
+    if d is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Démarche inconnue")
+    return {"segments": tts.spoken_segments(d, langue)}
+
+
 @router.post("/voice/transcribe", response_model=TranscribeResponse)
 def transcribe(req: TranscribeRequest) -> TranscribeResponse:
     """Whisper STT : audio base64 → texte + langue. L'audio n'est jamais stocké."""
@@ -79,7 +90,9 @@ def transcribe(req: TranscribeRequest) -> TranscribeResponse:
 @router.post("/voice/synthesize", response_model=SynthesizeResponse)
 def synthesize(req: SynthesizeRequest) -> SynthesizeResponse:
     """ElevenLabs TTS : texte → audio MP3 base64 (servi depuis le cache si déjà généré)."""
-    enforce_rate_limit("tts", req.borne_id)
+    # Une lecture déjà en cache est gratuite et instantanée : seules les générations sont limitées.
+    if not tts.is_cached(req.text, req.langue):
+        enforce_rate_limit("tts", req.borne_id)
     try:
         audio, cached = tts.synthesize_cached(req.text, req.langue)
     except tts.TTSUnavailable as exc:
