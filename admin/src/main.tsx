@@ -18,7 +18,7 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<RequireAuth><Layout /></RequireAuth>}>
