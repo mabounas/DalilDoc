@@ -1,7 +1,11 @@
 """Service Text-to-Speech ElevenLabs (CDC §08, PROMPT 11).
 
 Appel REST direct (``/v1/text-to-speech/{voice_id}``) avec ``httpx`` :
-modèle ``eleven_multilingual_v2``, débit légèrement ralenti pour la clarté.
+modèle ``eleven_multilingual_v2`` par défaut, débit légèrement ralenti.
+
+Chaque langue peut utiliser sa propre voix via ``ELEVENLABS_VOICE_<LANGUE>``
+(ex. ``ELEVENLABS_VOICE_DARIJA`` = une voix marocaine de la Voice Library),
+sinon ``ELEVENLABS_VOICE_DEFAULT``, sinon les voix préconfigurées ci-dessous.
 """
 
 from __future__ import annotations
@@ -26,19 +30,26 @@ class TTSUnavailable(RuntimeError):
     """Clé ElevenLabs absente ou service injoignable."""
 
 
+def voice_for(langue: str) -> str:
+    """Voix ElevenLabs d'une langue (surcharge par variable d'environnement)."""
+    return (os.getenv(f"ELEVENLABS_VOICE_{langue.upper()}")
+            or (os.getenv("ELEVENLABS_VOICE_AR") if langue == "darija" else None)
+            or os.getenv("ELEVENLABS_VOICE_DEFAULT")
+            or VOICE_IDS.get(langue, VOICE_IDS["fr"]))
+
+
 def synthesize(text: str, langue: str) -> bytes:
     """Synthétise ``text`` et retourne l'audio MP3."""
     api_key = os.getenv("ELEVENLABS_API_KEY")
     if not api_key:
         raise TTSUnavailable("ELEVENLABS_API_KEY manquante : synthèse vocale indisponible")
-    voice_id = VOICE_IDS.get(langue, VOICE_IDS["fr"])
     payload = {
         "text": text,
         "model_id": os.getenv("TTS_MODEL", "eleven_multilingual_v2"),
         "voice_settings": {"stability": 0.8, "similarity_boost": 0.75, "speed": 0.9},
     }
     try:
-        resp = httpx.post(API_URL.format(voice_id=voice_id), json=payload, timeout=15.0,
+        resp = httpx.post(API_URL.format(voice_id=voice_for(langue)), json=payload, timeout=15.0,
                           headers={"xi-api-key": api_key, "Accept": "audio/mpeg"})
         resp.raise_for_status()
     except httpx.HTTPError as exc:
