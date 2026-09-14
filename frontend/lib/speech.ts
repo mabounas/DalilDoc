@@ -181,9 +181,16 @@ export function moroccanBrowserVoice(lang: Lang, timeoutMs = 1500): Promise<Spee
       const voice = pickVoice(voices, "darija");
       return voice && isMoroccan(voice) ? voice : null;
     });
-    s.addEventListener?.("voiceschanged", () => { moroccanVoiceMemo = null; }, { once: true });
   }
   return moroccanVoiceMemo;
+}
+
+// Chrome et Edge émettent « voiceschanged » au démarrage : ne relancer la recherche (et
+// son délai) que si une voix marocaine vient réellement d'apparaître.
+if (typeof window !== "undefined" && "speechSynthesis" in window) {
+  window.speechSynthesis.addEventListener?.("voiceschanged", () => {
+    if (window.speechSynthesis.getVoices().some(isMoroccan)) moroccanVoiceMemo = null;
+  });
 }
 
 /** Adapte le texte à l'oral (séparateurs arabes, symboles). */
