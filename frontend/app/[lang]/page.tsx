@@ -9,6 +9,7 @@ import VoiceInput from "@/components/VoiceInput";
 import { askQuestion, type QueryResult } from "@/lib/api";
 import { EXAMPLES, isLang, isRtl, LANG_META, T, type Lang } from "@/lib/i18n";
 import { answerOffline } from "@/lib/offline";
+import { moroccanBrowserVoice } from "@/lib/speech";
 import { getSessionId, resetSession } from "@/lib/session";
 
 type Mode = "voice" | "text";
@@ -28,6 +29,8 @@ export default function InteractionPage({ params }: { params: { lang: string } }
   useEffect(() => {
     document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";
     document.documentElement.lang = LANG_META[lang].htmlLang;
+    // Recherche de la voix marocaine dès l'ouverture : aucune attente au moment de lire la réponse.
+    void moroccanBrowserVoice(lang);
   }, [lang]);
 
   const ask = useCallback(

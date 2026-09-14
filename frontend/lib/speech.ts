@@ -169,10 +169,21 @@ const isMoroccan = (v: VoiceLike) => v.lang.toLowerCase().replace("_", "-") === 
  * Prioritaire pour la darija et l'arabe : accent marocain, gratuite, sans crédit ElevenLabs.
  * Le texte lu (réponse publique de la borne) est traité par le service vocal de Microsoft.
  */
-export async function moroccanBrowserVoice(lang: Lang, timeoutMs = 1500): Promise<SpeechSynthesisVoice | null> {
-  if (lang !== "darija" && lang !== "ar") return null;
-  const voice = pickVoice(await loadVoices(timeoutMs, isMoroccan), lang);
-  return voice && isMoroccan(voice) ? voice : null;
+let moroccanVoiceMemo: Promise<SpeechSynthesisVoice | null> | null = null;
+
+export function moroccanBrowserVoice(lang: Lang, timeoutMs = 1500): Promise<SpeechSynthesisVoice | null> {
+  const s = synth();
+  if ((lang !== "darija" && lang !== "ar") || !s) return Promise.resolve(null);
+  // Résultat mémorisé : sans voix marocaine (ex. Chrome), on n'attend le délai qu'une fois,
+  // pas à chaque réponse. Un nouveau chargement de voix relance la recherche.
+  if (!moroccanVoiceMemo) {
+    moroccanVoiceMemo = loadVoices(timeoutMs, isMoroccan).then((voices) => {
+      const voice = pickVoice(voices, "darija");
+      return voice && isMoroccan(voice) ? voice : null;
+    });
+    s.addEventListener?.("voiceschanged", () => { moroccanVoiceMemo = null; }, { once: true });
+  }
+  return moroccanVoiceMemo;
 }
 
 /** Adapte le texte à l'oral (séparateurs arabes, symboles). */
