@@ -1,0 +1,18 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+psycopg[binary]>=3.2
+pydantic>=2.8
+python-dotenv>=1.0
+PyJWT>=2.9
+httpx>=0.27
+anthropic>=0.70
+openai>=1.50
+qdrant-client>=1.12
+redis>=5.0
+# Détection de langue fine (optionnel, nécessite lid.176.bin) :
+# fasttext-wheel>=0.9.2
+# LangChain / LlamaIndex : non requis par le pipeline actuel (orchestration maison, plus légère).
+
+# Tests
+pytest>=8.0

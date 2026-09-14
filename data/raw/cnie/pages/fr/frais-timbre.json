@@ -1,0 +1,27 @@
+{
+  "slug": "frais-timbre",
+  "categorie": "tarifs",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/static/procedure/frais-timbre",
+  "titre": "Droits de timbre - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Droits de timbre"
+    },
+    {
+      "tag": "h6",
+      "depth": 0,
+      "text": "Pour les majeurs, ainsi que les mineurs âgés de 12 ans grégoriens révolus et plus, les droits de timbres sont de 75 Dhs."
+    },
+    {
+      "tag": "h6",
+      "depth": 0,
+      "text": "Pour les mineurs ayant moins de 12 ans grégoriens révolus, les droits de timbre sont de 50 Dhs."
+    }
+  ],
+  "texte": "Droits de timbrePour les majeurs, ainsi que les mineurs âgés de 12 ans grégoriens révolus et plus, les droits de timbres sont de 75 Dhs.Pour les mineurs ayant moins de 12 ans grégoriens révolus, les droits de timbre sont de 50 Dhs.",
+  "sha256": "6d8e25baa8a2ddf20f32b6f3b56739359cd845a9d16986ee9a4b604f49731ec0",
+  "collecte_le": "2026-09-13T18:38:03.061783+00:00"
+}

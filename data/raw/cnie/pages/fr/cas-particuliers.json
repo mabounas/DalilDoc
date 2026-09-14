@@ -1,0 +1,57 @@
+{
+  "slug": "cas-particuliers",
+  "categorie": "exceptions",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/request-particular-cases",
+  "titre": "Cas particuliers - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Assistance pour les cas particuliers"
+    },
+    {
+      "tag": "h5",
+      "depth": 0,
+      "text": "Formulaire cas particuliers"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Objet de la demande *"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Raison de l'assistance demandée *"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "N° de la CNIE"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Nature de l'assistance demandée *"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Nom *"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Prénom *"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Adresse de l'établissement hospitalier ou du domicile *"
+    }
+  ],
+  "texte": "Assistance pour les cas particuliers Formulaire cas particuliers Objet de la demande* Raison de l'assistance demandée* N° de la CNIE Nature de l'assistance demandée* Nom* Prénom* Adresse de l'établissement hospitalier ou du domicile*Télécharger le formulaire",
+  "sha256": "b32393200b3f3d7f4aa88c6ca208734359d5d309ac2a4fc28aa99ea1c7a6186f",
+  "collecte_le": "2026-09-13T18:38:25.570066+00:00"
+}

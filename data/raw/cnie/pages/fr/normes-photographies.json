@@ -1,0 +1,22 @@
+{
+  "slug": "normes-photographies",
+  "categorie": "conditions",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/static/procedure/normes-photographies",
+  "titre": "Normes des photographies d’identité - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Normes des photographies d’identité"
+    },
+    {
+      "tag": "h6",
+      "depth": 0,
+      "text": "Les photographies d’identité pour les Cartes Nationales d’Identités Electroniques doivent obligatoirement obéir aux normes en vigueur. Elles doivent être récentes (datées au maximum 6 mois), identiques, avec un fond gris clair ou bleu clair, de format 35x45mm avec le visage au centre de la photographie."
+    }
+  ],
+  "texte": "Normes des photographies d’identité Les photographies d’identité pour les Cartes Nationales d’Identités Electroniques doivent obligatoirement obéir aux normes en vigueur. Elles doivent être récentes (datées au maximum 6 mois), identiques, avec un fond gris clair ou bleu clair, de format 35x45mm avec le visage au centre de la photographie.",
+  "sha256": "1e573872582657931f319c2a00452cdf968f5b67a4d29747aa50d03c7c12f9d5",
+  "collecte_le": "2026-09-13T18:38:06.637788+00:00"
+}

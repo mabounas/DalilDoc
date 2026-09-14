@@ -1,0 +1,32 @@
+{
+  "slug": "reglementation",
+  "categorie": "reglementation",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/static/reglementation",
+  "titre": "Réglementation - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Réglementation"
+    },
+    {
+      "tag": "h5",
+      "depth": 0,
+      "text": "Loi et décret relatifs à la CNIE"
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "Dahir n° 1.20.80 du 18 Dhou al hijja 1441 (8 août 2020) portant promulgation de la loi n° 04.20 instituant la carte nationale d'identité électronique."
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "Décret n° 2.20.521 du 23 Dhou al hijja 1441 (13 août 2020) pris pour l’application de la loi n°04.20 régissant la carte nationale d’identité électronique."
+    }
+  ],
+  "texte": "Réglementation Loi et décret relatifs à la CNIE Dahir n° 1.20.80 du 18 Dhou al hijja 1441 (8 août 2020) portant promulgation de la loi n° 04.20 instituant la carte nationale d'identité électronique. Décret n° 2.20.521 du 23 Dhou al hijja 1441 (13 août 2020) pris pour l’application de la loi n°04.20 régissant la carte nationale d’identité électronique.",
+  "sha256": "76175818f640ab66960c0c36430ae15ae5a64b741cc1bef884429072724196d6",
+  "collecte_le": "2026-09-13T18:38:18.328302+00:00"
+}

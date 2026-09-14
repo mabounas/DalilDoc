@@ -1,0 +1,72 @@
+{
+  "slug": "types-demande",
+  "categorie": "procedures",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/request-select-type",
+  "titre": "Suivre ou compléter votre demande - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Suivre ou compléter votre demande"
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "En renseignant votre numéro de pré-demande et votre date de naissance vous pourrez :"
+    },
+    {
+      "tag": "li",
+      "depth": 1,
+      "text": "Suivre l'état d'avancement de votre demande."
+    },
+    {
+      "tag": "li",
+      "depth": 1,
+      "text": "Télécharger votre formulaire."
+    },
+    {
+      "tag": "li",
+      "depth": 1,
+      "text": "Compléter une demande à l'état brouillon."
+    },
+    {
+      "tag": "li",
+      "depth": 1,
+      "text": "Modifier ou annuler votre rendez-vous"
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "En renseignant votre numéro de CNIE et votre date de naissance vous pourrez :"
+    },
+    {
+      "tag": "li",
+      "depth": 1,
+      "text": "Suivre l'état d'avancement de votre demande."
+    },
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "Suivre ou compléter votre demande"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "N° CNIE"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Numéro de la demande"
+    },
+    {
+      "tag": "div",
+      "depth": 0,
+      "text": "Date de naissance *"
+    }
+  ],
+  "texte": "Suivre ou compléter votre demande En renseignant votre numéro de pré-demande et votre date de naissance vous pourrez : Suivre l'état d'avancement de votre demande. Télécharger votre formulaire. Compléter une demande à l'état brouillon.Modifier ou annuler votre rendez-vous En renseignant votre numéro de CNIE et votre date de naissance vous pourrez : Suivre l'état d'avancement de votre demande. Suivre ou compléter votre demandeN° CNIENuméro de la demande Date de naissance*Rechercher",
+  "sha256": "afe3f186a5b8f82404ac127104395310a609998675e054b426e367637ce6af26",
+  "collecte_le": "2026-09-13T18:38:29.230048+00:00"
+}

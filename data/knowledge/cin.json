@@ -1,0 +1,1585 @@
+{
+  "schema_version": 1,
+  "domaine": "carte-nationale-identite",
+  "source": {
+    "portail": "https://www.cnie.ma",
+    "editeur": "Direction Générale de la Sûreté Nationale (DGSN)",
+    "collecte_le": "2026-09-13",
+    "brut": "data/raw/cnie/",
+    "reglementation": [
+      "Dahir n° 1.20.80 du 18 Dhou al hijja 1441 (8 août 2020) portant promulgation de la loi n° 04.20 instituant la carte nationale d'identité électronique",
+      "Décret n° 2.20.521 du 23 Dhou al hijja 1441 (13 août 2020) pris pour l'application de la loi n° 04.20"
+    ]
+  },
+  "traductions": {
+    "fr": "officielle (cnie.ma)",
+    "ar": "officielle (cnie.ma)",
+    "darija": "non officielle — à valider dans le back-office",
+    "en": "non officielle — à valider dans le back-office",
+    "pt": "non officielle — à valider dans le back-office",
+    "es": "non officielle — à valider dans le back-office"
+  },
+  "demarches": [
+    {
+      "slug": "cin-premiere-demande",
+      "code_portail": "NR",
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "Carte Nationale d'Identité Électronique (CNIE) — première demande",
+        "ar": "البطاقة الوطنية للتعريف الإلكترونية — الطلب لأول مرة",
+        "darija": "لاكارط الوطنية (CNIE) — أول مرة",
+        "en": "Electronic National Identity Card (CNIE) — first application",
+        "pt": "Cartão Nacional de Identidade Eletrónico (CNIE) — primeiro pedido",
+        "es": "Documento Nacional de Identidad Electrónico (CNIE) — primera solicitud"
+      },
+      "mots_cles": {
+        "fr": [
+          "première fois",
+          "première délivrance",
+          "nouvelle carte"
+        ],
+        "ar": [
+          "لأول مرة",
+          "أول طلب"
+        ],
+        "darija": [
+          "أول مرة"
+        ],
+        "en": [
+          "first time",
+          "new card"
+        ],
+        "pt": [
+          "primeira vez",
+          "documentos"
+        ],
+        "es": [
+          "primera vez",
+          "documentos"
+        ]
+      },
+      "administration": "DGSN — Centres d'Enregistrement des Données Identitaires (CEDI)",
+      "delai_jours": null,
+      "cout_mad": 75,
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "La CNIE est obligatoire pour tout citoyen âgé de 16 ans grégoriens révolus.",
+          "ar": "تعتبر البطاقة الوطنية للتعريف الإلكترونية إجبارية لكل مواطن يبلغ 16 سنة شمسية كاملة.",
+          "darija": "لاكارط الوطنية واجبة على كل مواطن وصل 16 عام كاملة.",
+          "en": "The CNIE is mandatory for every citizen aged 16 full years.",
+          "pt": "O CNIE é obrigatório para todo o cidadão com 16 anos completos.",
+          "es": "El CNIE es obligatorio para todo ciudadano de 16 años cumplidos."
+        },
+        {
+          "fr": "Elle peut être délivrée au mineur de moins de 16 ans, à la demande de son représentant légal.",
+          "ar": "يمكن أن تسلم للقاصرين الذين لا يتجاوز عمرهم 16 سنة، وذلك بطلب من نائبهم الشرعي.",
+          "darija": "تقدر تتعطى حتى للصغار اللي تحت 16 عام، بطلب من الولي ديالهم.",
+          "en": "It can be issued to minors under 16 at the request of their legal representative.",
+          "pt": "Pode ser emitido a menores de 16 anos, a pedido do seu representante legal.",
+          "es": "Puede expedirse a menores de 16 años a petición de su representante legal."
+        },
+        {
+          "fr": "Le dépôt se fait dans un Centre d'Enregistrement des Données Identitaires (CEDI), rattaché aux préfectures de police, sûretés régionales et provinciales et commissariats. Les Marocains résidant à l'étranger s'adressent au service de la Carte Nationale des représentations diplomatiques ou aux guichets MRE des CEDI.",
+          "ar": "يتم إيداع الطلب بمراكز تسجيل المعطيات التعريفية التابعة لولايات الأمن والأمن الجهوي والمفوضيات. أما المغاربة المقيمون بالخارج فيتوجهون إلى مصلحة البطاقة الوطنية بالتمثيليات الدبلوماسية أو إلى الشبابيك الخاصة بهم بمراكز التسجيل.",
+          "darija": "كتحط الطلب فمركز تسجيل المعطيات التعريفية (CEDI) ديال البوليس. المغاربة اللي ساكنين برا كيمشيو للقنصلية ولا للشبابيك ديال الجالية فالمراكز.",
+          "en": "Applications are filed at a Identity Data Registration Centre (CEDI) attached to police headquarters. Moroccans living abroad go to the National Card service at Moroccan diplomatic missions or the MRE counters of the CEDI.",
+          "pt": "O pedido é entregue num Centro de Registo de Dados Identitários (CEDI) ligado à polícia. Os marroquinos residentes no estrangeiro dirigem-se ao serviço do Cartão Nacional nas representações diplomáticas ou aos balcões MRE dos CEDI.",
+          "es": "La solicitud se presenta en un Centro de Registro de Datos Identitarios (CEDI) dependiente de la policía. Los marroquíes residentes en el extranjero acuden al servicio del Carné Nacional de las representaciones diplomáticas o a las ventanillas MRE de los CEDI."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Certificat de résidence (milieu urbain : Police ; milieu rural : Gendarmerie Royale ou, à défaut, autorité administrative locale)",
+            "ar": "شهادة الإقامة (بالوسط الحضري من طرف مصالح الأمن الوطني، وبالوسط القروي من طرف الدرك الملكي أو السلطة الإدارية المحلية)",
+            "darija": "شهادة السكنى (فالمدينة من البوليس، فالعروبية من الجدارمية ولا المقدم/القايد)",
+            "en": "Certificate of residence (urban areas: Police; rural areas: Royal Gendarmerie or local administrative authority)",
+            "pt": "Certificado de residência (zona urbana: Polícia; zona rural: Gendarmaria Real ou autoridade administrativa local)",
+            "es": "Certificado de residencia (zona urbana: Policía; zona rural: Gendarmería Real o autoridad administrativa local)"
+          },
+          "condition": {
+            "fr": "résidents au Maroc",
+            "ar": "بالنسبة للمقيمين بالمغرب",
+            "darija": "إلا كنتي ساكن فالمغرب",
+            "en": "residents of Morocco",
+            "pt": "residentes em Marrocos",
+            "es": "residentes en Marruecos"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Attestation d'immatriculation consulaire mentionnant l'adresse",
+            "ar": "شهادة التسجيل القنصلي متضمنة لعنوان السكنى",
+            "darija": "شهادة التسجيل فالقنصلية فيها العنوان",
+            "en": "Consular registration certificate showing the address",
+            "pt": "Certificado de inscrição consular com a morada",
+            "es": "Certificado de inscripción consular con la dirección"
+          },
+          "condition": {
+            "fr": "Marocains résidant à l'étranger",
+            "ar": "بالنسبة للمغاربة المقيمين بالخارج",
+            "darija": "للمغاربة اللي ساكنين برا",
+            "en": "Moroccans living abroad",
+            "pt": "marroquinos residentes no estrangeiro",
+            "es": "marroquíes residentes en el extranjero"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 3,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Quatre photographies d'identité récentes (6 mois maximum), identiques, format 35x45 mm, fond gris clair ou bleu clair",
+            "ar": "أربع صور فوتوغرافية للتعريف حديثة لا تتجاوز 6 أشهر، متطابقة، بحجم 35×45 ملم وخلفية رمادية فاتحة أو زرقاء فاتحة",
+            "darija": "4 تصاور ديال التعريف جداد (ما فايتينش 6 شهور)، قد قد، 35×45 ملم، الخلفية رمادية فاتحة ولا زرقة فاتحة",
+            "en": "Four recent identical ID photos (max. 6 months old), 35x45 mm, light grey or light blue background",
+            "pt": "Quatro fotografias tipo passe recentes e idênticas (máx. 6 meses), 35x45 mm, fundo cinzento claro ou azul claro",
+            "es": "Cuatro fotografías de carné recientes e idénticas (máx. 6 meses), 35x45 mm, fondo gris claro o azul claro"
+          },
+          "condition": null,
+          "format": [
+            "photo 35x45mm"
+          ]
+        },
+        {
+          "ordre": 4,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Droits de timbre : 75 Dhs (50 Dhs pour les mineurs de moins de 12 ans)",
+            "ar": "واجبات التمبر: 75 درهما (50 درهما للقاصرين الذين تقل أعمارهم عن 12 سنة)",
+            "darija": "التمبر: 75 درهم (50 درهم للدراري اللي تحت 12 عام)",
+            "en": "Stamp duty: 75 MAD (50 MAD for minors under 12)",
+            "pt": "Imposto de selo: 75 MAD (50 MAD para menores de 12 anos)",
+            "es": "Tasa de timbre: 75 MAD (50 MAD para menores de 12 años)"
+          },
+          "condition": null,
+          "format": [
+            "e-timbre"
+          ]
+        },
+        {
+          "ordre": 5,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Copie de la page du livret de famille (avec présentation du livret), ou copie intégrale de l'état civil, ou extrait d'acte de naissance (moins de 3 mois, en arabe et en latin)",
+            "ar": "نسخة مصورة من صفحة المعني بالأمر بالدفتر العائلي مع تقديمه، أو نسخة كاملة من سجل الحالة المدنية، أو نسخة من رسم الولادة (لا تتجاوز ثلاثة أشهر، باللاتينية والعربية)",
+            "darija": "كوبي ديال الصفحة ديالك فالدفتر العائلي (وجيب الدفتر معاك)، ولا نسخة كاملة، ولا عقد الازدياد (ما فايتش 3 شهور، بالعربية والفرنسية)",
+            "en": "Copy of your page in the family record book (showing the book), or full civil status copy, or birth certificate extract (less than 3 months old, in Arabic and Latin script)",
+            "pt": "Cópia da página do livro de família (apresentando o livro), ou cópia integral do registo civil, ou extrato da certidão de nascimento (menos de 3 meses, em árabe e latim)",
+            "es": "Copia de la página del libro de familia (presentando el libro), o copia íntegra del registro civil, o extracto del acta de nacimiento (menos de 3 meses, en árabe y latín)"
+          },
+          "condition": null,
+          "format": [
+            "copie",
+            "original"
+          ]
+        },
+        {
+          "ordre": 6,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Ampliation ou copie certifiée conforme de l'acte accordant la nationalité marocaine",
+            "ar": "نظير أو نسخة مصادق عليها من الوثيقة الممنوحة بموجبها الجنسية المغربية",
+            "darija": "نسخة مصادق عليها ديال الوثيقة اللي عطاتك الجنسية المغربية",
+            "en": "Certified copy of the act granting Moroccan nationality",
+            "pt": "Cópia autenticada do ato que concede a nacionalidade marroquina",
+            "es": "Copia compulsada del acto que concede la nacionalidad marroquí"
+          },
+          "condition": {
+            "fr": "étrangers ayant acquis la nationalité marocaine",
+            "ar": "بالنسبة للأجانب الذين اكتسبوا الجنسية المغربية",
+            "darija": "للأجانب اللي خداو الجنسية المغربية",
+            "en": "foreigners who acquired Moroccan nationality",
+            "pt": "estrangeiros que adquiriram a nacionalidade marroquina",
+            "es": "extranjeros que adquirieron la nacionalidad marroquí"
+          },
+          "format": [
+            "copie certifiée conforme"
+          ]
+        },
+        {
+          "ordre": 7,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Certificat de nationalité",
+            "ar": "شهادة الجنسية",
+            "darija": "شهادة الجنسية",
+            "en": "Certificate of nationality",
+            "pt": "Certificado de nacionalidade",
+            "es": "Certificado de nacionalidad"
+          },
+          "condition": {
+            "fr": "si la nationalité marocaine du demandeur paraît douteuse",
+            "ar": "إذا وقع شك في جنسية طالب البطاقة",
+            "darija": "إلا كان شك فالجنسية",
+            "en": "if the applicant's Moroccan nationality is in doubt",
+            "pt": "se houver dúvida sobre a nacionalidade marroquina do requerente",
+            "es": "si la nacionalidad marroquí del solicitante es dudosa"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 8,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Pour la mention « épouse », « veuve » ou « veuf » : copie certifiée conforme de l'acte de mariage, extrait d'acte de naissance du conjoint, extrait d'acte de décès du conjoint (selon le cas)",
+            "ar": "لإدراج عبارة \"زوجة\" أو \"أرملة\" أو \"أرمل\": نسخة مطابقة للأصل من عقد الزواج، نسخة من رسم ولادة الزوج، نسخة من رسم وفاة الزوج أو الزوجة (حسب الحالة)",
+            "darija": "باش يتكتب \"زوجة\" ولا \"أرملة\" ولا \"أرمل\": نسخة مصادق عليها ديال عقد الزواج، عقد ازدياد الزوج، وشهادة الوفاة إلا كان متوفي",
+            "en": "For the mention \"wife\", \"widow\" or \"widower\": certified copy of the marriage certificate, spouse's birth certificate extract, spouse's death certificate extract (as applicable)",
+            "pt": "Para a menção \"esposa\", \"viúva\" ou \"viúvo\": cópia autenticada da certidão de casamento, certidão de nascimento do cônjuge, certidão de óbito do cônjuge (conforme o caso)",
+            "es": "Para la mención \"esposa\", \"viuda\" o \"viudo\": copia compulsada del acta de matrimonio, extracto del acta de nacimiento del cónyuge, extracto del acta de defunción del cónyuge (según el caso)"
+          },
+          "condition": {
+            "fr": "mention facultative",
+            "ar": "عبارة اختيارية",
+            "darija": "ماشي ضروري",
+            "en": "optional mention",
+            "pt": "menção facultativa",
+            "es": "mención opcional"
+          },
+          "format": [
+            "copie certifiée conforme"
+          ]
+        },
+        {
+          "ordre": 9,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Mineur : présence obligatoire du mineur, accompagné de son représentant légal muni d'une copie de sa CNIE et d'un document justifiant sa qualité",
+            "ar": "القاصر: حضوره إلزامي مرفوقا بنائبه الشرعي الذي يدلي بنسخة من بطاقته الوطنية ووثيقة تبرر صفته",
+            "darija": "للدراري الصغار: خاص الولد يحضر مع الولي ديالو، والولي يجيب كوبي ديال لاكارط ديالو ووثيقة كتبين الصفة ديالو",
+            "en": "Minor: the minor must attend, accompanied by the legal representative bringing a copy of their CNIE and a document proving their status",
+            "pt": "Menor: presença obrigatória do menor, acompanhado do representante legal com cópia do seu CNIE e documento que comprove a sua qualidade",
+            "es": "Menor: presencia obligatoria del menor, acompañado de su representante legal con copia de su CNIE y un documento que acredite su condición"
+          },
+          "condition": {
+            "fr": "demande pour un mineur",
+            "ar": "إذا كان الطلب لفائدة قاصر",
+            "darija": "إلا كان الطلب لولد صغير",
+            "en": "application for a minor",
+            "pt": "pedido para um menor",
+            "es": "solicitud para un menor"
+          },
+          "format": [
+            "copie CNIE",
+            "justificatif"
+          ]
+        },
+        {
+          "ordre": 10,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Formulaire de pré-demande dûment rempli sur www.cnie.ma",
+            "ar": "استمارة الطلب المسبق معبأة عبر www.cnie.ma",
+            "darija": "الاستمارة ديال الطلب المسبق معمرة من www.cnie.ma",
+            "en": "Pre-application form completed on www.cnie.ma",
+            "pt": "Formulário de pré-pedido preenchido em www.cnie.ma",
+            "es": "Formulario de presolicitud cumplimentado en www.cnie.ma"
+          },
+          "condition": {
+            "fr": "si vous avez rempli la pré-demande en ligne",
+            "ar": "في حالة ملء الطلب المسبق عبر الإنترنت",
+            "darija": "إلا عمرتي الطلب فالأنترنيت",
+            "en": "if you filled in the online pre-application",
+            "pt": "se preencheu o pré-pedido online",
+            "es": "si rellenó la presolicitud en línea"
+          },
+          "format": [
+            "imprimé signé"
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "fr": "Les personnes handicapées, alitées ou souffrant d'une maladie immobilisante peuvent accomplir les formalités à domicile ou à l'hôpital (voir « Cas particuliers »).",
+          "ar": "يمكن للأشخاص في وضعية إعاقة أو طريحي الفراش أو المصابين بأمراض تعوق حركتهم إتمام الإجراءات بمحل إقامتهم أو بالمؤسسة الاستشفائية (انظر \"حالات خاصة\").",
+          "darija": "الناس اللي عندهم إعاقة ولا ناعسين فالفراش ولا مراض ما يقدروش يتحركو، يقدرو يديرو الإجراءات فالدار ولا فالسبيطار (شوف \"حالات خاصة\").",
+          "en": "People with disabilities, bedridden or with an immobilising illness can complete the formalities at home or in hospital (see \"Special cases\").",
+          "pt": "Pessoas com deficiência, acamadas ou com doença imobilizante podem tratar das formalidades em casa ou no hospital (ver \"Casos especiais\").",
+          "es": "Las personas con discapacidad, encamadas o con una enfermedad inmovilizante pueden realizar los trámites en su domicilio o en el hospital (ver \"Casos particulares\")."
+        }
+      ],
+      "tarifs": [
+        {
+          "fr": "Droits de timbre : 75 Dhs pour les majeurs et les mineurs de 12 ans révolus et plus ; 50 Dhs pour les mineurs de moins de 12 ans.",
+          "ar": "واجبات التمبر: 75 درهما للبالغين والقاصرين البالغين 12 سنة فما فوق، و50 درهما للقاصرين الذين تقل أعمارهم عن 12 سنة.",
+          "darija": "التمبر: 75 درهم للكبار وللدراري من 12 عام وفوق، و50 درهم للدراري اللي تحت 12 عام.",
+          "en": "Stamp duty: 75 MAD for adults and minors aged 12 and over; 50 MAD for minors under 12.",
+          "pt": "Imposto de selo: 75 MAD para adultos e menores com 12 anos ou mais; 50 MAD para menores de 12 anos.",
+          "es": "Tasa de timbre: 75 MAD para adultos y menores de 12 años cumplidos o más; 50 MAD para menores de 12 años."
+        },
+        {
+          "fr": "Validité : 10 ans pour les personnes de 12 ans et plus ; 7 ans au plus pour les mineurs de moins de 12 ans, avec expiration à 12 ans.",
+          "ar": "مدة الصلاحية: 10 سنوات للأشخاص البالغين 12 سنة فما فوق، و7 سنوات على الأكثر للقاصرين دون 12 سنة مع انتهاء صلاحيتها عند بلوغ 12 سنة.",
+          "darija": "المدة ديال الصلاحية: 10 سنين من 12 عام وفوق، و7 سنين على الأكثر للصغار تحت 12 عام، وكتسالي ملي يوصل 12 عام.",
+          "en": "Validity: 10 years for people aged 12 and over; at most 7 years for minors under 12, expiring at age 12.",
+          "pt": "Validade: 10 anos para pessoas com 12 anos ou mais; no máximo 7 anos para menores de 12, expirando aos 12 anos.",
+          "es": "Validez: 10 años para personas de 12 años o más; como máximo 7 años para menores de 12, con vencimiento a los 12 años."
+        }
+      ],
+      "faq": [
+        {
+          "question": {
+            "fr": "A partir de quel âge un citoyen est obligé de disposer d'une CNIE ?",
+            "ar": "ابتداء من أي سن يتوجب على كل مواطن مغربي التوفر على بطاقة وطنية للتعريف الإلكترونية ؟"
+          },
+          "reponse": {
+            "fr": "Tout marocain âgé de 16 ans révolus doit être titulaire de la CNIE.",
+            "ar": "يجب على كل مواطن مغربي الحصول على بطاقة وطنية للتعريف الإلكترونية ابتداء من سن 16."
+          }
+        },
+        {
+          "question": {
+            "fr": "Quelles sont les exigences de la photo pour la CNIE ?",
+            "ar": "ما هي الشروط التي يجب توفرها في الصور الفوتوغرافية التي تستعمل من أجل إنجاز البطاقة ؟"
+          },
+          "reponse": {
+            "fr": "Les photos doivent être de face, en couleurs, de format 3,5 cm x 4,5 cm, sur fond gris ou bleu clair, le visage et les oreilles découverts, sans lunettes sombres.",
+            "ar": "يجب أن تكون الصور أمامية وبالألوان، من حجم 3,5 سنتمتر × 4,5 سنتمتر، ذات خلفية رمادية فاتحة أو زرقاء فاتحة بوجه وأذنين مكشوفة وبدون نظارات قاتمة."
+          }
+        },
+        {
+          "question": {
+            "fr": "Où trouver les pièces justificatives nécessaires ?",
+            "ar": "أين أجد الوثائق المطلوبة؟"
+          },
+          "reponse": {
+            "fr": "Certificat de résidence : services territoriaux de la DGSN, Gendarmerie Royale ou autorité administrative locale. Copie intégrale ou extrait d'acte de naissance : bureau d'état civil de la commune du lieu de naissance. Attestation d'immatriculation consulaire : missions diplomatiques et postes consulaires du Maroc. Acte de nationalité : Ministre de la Justice ou autorité désignée. Acte de mariage : autorités administratives ou judiciaires compétentes.",
+            "ar": "شهادة السكنى: المصالح الترابية المختصة، الأمن الوطني، الدرك الملكي أو السلطة الإدارية المحلية. نسخة كاملة أو موجزة من رسم الولادة: مكتب الحالة المدنية بالجماعة محل الولادة. شهادة التسجيل القنصلي: البعثات الدبلوماسية والقنصلية للمملكة. الجنسية: وزير العدل أو السلطة المختصة. عقد الزواج: السلطات الإدارية أو القضائية المختصة."
+          }
+        }
+      ],
+      "synonymes": {
+        "fr": [
+          "CIN",
+          "CNIE",
+          "carte d'identité",
+          "papiers",
+          "documents"
+        ],
+        "ar": [
+          "البطاقة الوطنية",
+          "بطاقة التعريف",
+          "الوثائق المطلوبة"
+        ],
+        "darija": [
+          "لاكارط",
+          "لاكارت",
+          "البطاقة الوطنية",
+          "شنو خاصني",
+          "الوراق",
+          "cin",
+          "lakart"
+        ],
+        "en": [
+          "ID card",
+          "national identity card",
+          "CIN",
+          "documents"
+        ],
+        "pt": [
+          "cartão de identidade",
+          "bilhete de identidade",
+          "CIN"
+        ],
+        "es": [
+          "carné de identidad",
+          "DNI",
+          "CIN"
+        ]
+      }
+    },
+    {
+      "slug": "cin-renouvellement",
+      "code_portail": "DR",
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "CNIE — renouvellement (expiration ou changement de données)",
+        "ar": "البطاقة الوطنية للتعريف الإلكترونية — التجديد (انتهاء الصلاحية أو تغيير المعطيات)",
+        "darija": "تجديد لاكارط الوطنية (سالات ولا بغيتي تبدل شي معلومة)",
+        "en": "CNIE — renewal (expiry or change of details)",
+        "pt": "CNIE — renovação (expiração ou alteração de dados)",
+        "es": "CNIE — renovación (caducidad o cambio de datos)"
+      },
+      "mots_cles": {
+        "fr": [
+          "renouvellement",
+          "renouveler",
+          "expirée",
+          "expiration",
+          "périmée",
+          "changement d'adresse",
+          "modification",
+          "changer de nom"
+        ],
+        "ar": [
+          "تجديد",
+          "انتهاء الصلاحية",
+          "تغيير العنوان",
+          "تغيير المعطيات",
+          "منتهية"
+        ],
+        "darija": [
+          "نجدد",
+          "تجديد",
+          "سالات",
+          "تسالات",
+          "بدلت العنوان",
+          "نبدل لاكارط",
+          "خاصني نجدد"
+        ],
+        "en": [
+          "renew",
+          "renewal",
+          "expired",
+          "change of address",
+          "update details"
+        ],
+        "pt": [
+          "renovar",
+          "renovação",
+          "expirado",
+          "mudança de morada"
+        ],
+        "es": [
+          "renovar",
+          "renovación",
+          "caducado",
+          "cambio de dirección"
+        ]
+      },
+      "administration": "DGSN — Centres d'Enregistrement des Données Identitaires (CEDI)",
+      "delai_jours": null,
+      "cout_mad": 75,
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "Le renouvellement délivre une nouvelle carte valable 10 ans pour les personnes de 12 ans et plus ; 7 ans au plus pour les mineurs de moins de 12 ans, avec expiration à 12 ans.",
+          "ar": "عند التجديد يتم تسليم بطاقة جديدة صالحة لعشر سنوات للأشخاص البالغين 12 سنة فما فوق، و7 سنوات على الأكثر للقاصرين دون 12 سنة مع انتهاء صلاحيتها عند بلوغ 12 سنة.",
+          "darija": "فالتجديد كتاخد لاكارط جديدة صالحة 10 سنين إلا عندك 12 عام ولا كتر، و7 سنين على الأكثر للصغار تحت 12 عام.",
+          "en": "Renewal issues a new card valid for 10 years for people aged 12 and over; at most 7 years for minors under 12, expiring at age 12.",
+          "pt": "A renovação emite um novo cartão válido por 10 anos para pessoas com 12 anos ou mais; no máximo 7 anos para menores de 12 anos.",
+          "es": "La renovación expide una nueva tarjeta válida 10 años para personas de 12 años o más; como máximo 7 años para menores de 12."
+        },
+        {
+          "fr": "Le citoyen n'est tenu de changer sa CNIE que lorsqu'elle expire ou lorsqu'il doit modifier une ou plusieurs données, comme l'adresse du domicile. Tout citoyen peut toutefois demander une nouvelle CNIE à tout moment.",
+          "ar": "لا يتوجب على المواطن تغيير بطاقته إلا في حالة انتهاء صلاحيتها أو ضرورة تغيير معلومة أو أكثر كعنوان السكنى. ومع ذلك يمكن لكل مواطن طلب البطاقة الجديدة متى شاء.",
+          "darija": "ما خاصكش تبدل لاكارط حتى تسالي ولا تبدل شي معلومة بحال العنوان. ولكن تقدر تطلب وحدة جديدة وقتما بغيتي.",
+          "en": "Citizens only need to replace their CNIE when it expires or when details such as the home address change. Any citizen may nevertheless request a new CNIE at any time.",
+          "pt": "O cidadão só tem de substituir o CNIE quando expira ou quando altera dados como a morada. Pode, no entanto, pedir um novo CNIE a qualquer momento.",
+          "es": "El ciudadano solo debe cambiar su CNIE cuando caduca o cuando cambian datos como la dirección. No obstante, puede solicitar un nuevo CNIE en cualquier momento."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Certificat de résidence (Police en milieu urbain ; Gendarmerie Royale ou autorité locale en milieu rural)",
+            "ar": "شهادة الإقامة (الأمن الوطني بالوسط الحضري، الدرك الملكي أو السلطة المحلية بالوسط القروي)",
+            "darija": "شهادة السكنى (البوليس فالمدينة، الجدارمية ولا السلطة فالعروبية)",
+            "en": "Certificate of residence (Police in urban areas; Royal Gendarmerie or local authority in rural areas)",
+            "pt": "Certificado de residência (Polícia em zona urbana; Gendarmaria Real ou autoridade local em zona rural)",
+            "es": "Certificado de residencia (Policía en zona urbana; Gendarmería Real o autoridad local en zona rural)"
+          },
+          "condition": {
+            "fr": "résidents au Maroc",
+            "ar": "بالنسبة للمقيمين بالمغرب",
+            "darija": "إلا كنتي ساكن فالمغرب",
+            "en": "residents of Morocco",
+            "pt": "residentes em Marrocos",
+            "es": "residentes en Marruecos"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Attestation d'immatriculation consulaire mentionnant l'adresse",
+            "ar": "شهادة التسجيل القنصلي متضمنة لعنوان السكنى",
+            "darija": "شهادة التسجيل فالقنصلية فيها العنوان",
+            "en": "Consular registration certificate showing the address",
+            "pt": "Certificado de inscrição consular com a morada",
+            "es": "Certificado de inscripción consular con la dirección"
+          },
+          "condition": {
+            "fr": "Marocains résidant à l'étranger",
+            "ar": "بالنسبة للمغاربة المقيمين بالخارج",
+            "darija": "للمغاربة اللي ساكنين برا",
+            "en": "Moroccans living abroad",
+            "pt": "marroquinos residentes no estrangeiro",
+            "es": "marroquíes residentes en el extranjero"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 3,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Quatre photographies d'identité récentes (6 mois maximum), conformes aux normes (35x45 mm, fond gris clair ou bleu clair)",
+            "ar": "أربع صور فوتوغرافية للتعريف حديثة لا تتجاوز 6 أشهر ومطابقة للمعايير (35×45 ملم، خلفية رمادية أو زرقاء فاتحة)",
+            "darija": "4 تصاور ديال التعريف جداد (ما فايتينش 6 شهور)، 35×45 ملم، الخلفية رمادية ولا زرقة فاتحة",
+            "en": "Four recent ID photos (max. 6 months old) meeting the standards (35x45 mm, light grey or light blue background)",
+            "pt": "Quatro fotografias tipo passe recentes (máx. 6 meses) conformes às normas (35x45 mm, fundo cinzento ou azul claro)",
+            "es": "Cuatro fotografías de carné recientes (máx. 6 meses) conformes a las normas (35x45 mm, fondo gris o azul claro)"
+          },
+          "condition": null,
+          "format": [
+            "photo 35x45mm"
+          ]
+        },
+        {
+          "ordre": 4,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Droits de timbre : 75 Dhs (50 Dhs pour les mineurs de moins de 12 ans)",
+            "ar": "واجبات التمبر: 75 درهما (50 درهما للقاصرين دون 12 سنة)",
+            "darija": "التمبر: 75 درهم (50 درهم للدراري تحت 12 عام)",
+            "en": "Stamp duty: 75 MAD (50 MAD for minors under 12)",
+            "pt": "Imposto de selo: 75 MAD (50 MAD para menores de 12 anos)",
+            "es": "Tasa de timbre: 75 MAD (50 MAD para menores de 12 años)"
+          },
+          "condition": null,
+          "format": [
+            "e-timbre"
+          ]
+        },
+        {
+          "ordre": 5,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Restitution de l'ancienne CNIE",
+            "ar": "استرجاع البطاقة الوطنية للتعريف الإلكترونية التي بحوزة المعني بالأمر",
+            "darija": "رجع لاكارط القديمة",
+            "en": "Return of the old CNIE",
+            "pt": "Devolução do CNIE antigo",
+            "es": "Devolución del CNIE antiguo"
+          },
+          "condition": {
+            "fr": "si elle n'est pas perdue ou volée",
+            "ar": "إذا لم تكن ضائعة أو مسروقة",
+            "darija": "إلا ما ضاعتش وما تسرقاتش",
+            "en": "if it is not lost or stolen",
+            "pt": "se não tiver sido perdido ou roubado",
+            "es": "si no se ha perdido ni robado"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 6,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Pièces administratives ou judiciaires attestant la modification (prénom, nom, date de naissance, lieu de naissance, numéro d'acte d'état civil ou filiation)",
+            "ar": "الوثائق الإدارية أو القضائية التي تثبت التغيير (الاسم الشخصي أو العائلي، تاريخ أو مكان الازدياد، رقم عقد الحالة المدنية أو النسب)",
+            "darija": "الوراق الإدارية ولا ديال المحكمة اللي كتبين التغيير (السمية، الكنية، تاريخ ولا بلاصة الزيادة، رقم الحالة المدنية ولا النسب)",
+            "en": "Administrative or court documents proving the change (first name, surname, date or place of birth, civil status number or parentage)",
+            "pt": "Documentos administrativos ou judiciais que comprovem a alteração (nome, apelido, data ou local de nascimento, número do registo civil ou filiação)",
+            "es": "Documentos administrativos o judiciales que acrediten el cambio (nombre, apellido, fecha o lugar de nacimiento, número de registro civil o filiación)"
+          },
+          "condition": {
+            "fr": "en cas de changement de données d'état civil",
+            "ar": "في حالة تغيير معطيات الحالة المدنية",
+            "darija": "إلا تبدلات شي معلومة ديال الحالة المدنية",
+            "en": "if civil status details changed",
+            "pt": "em caso de alteração dos dados do registo civil",
+            "es": "en caso de cambio de datos del registro civil"
+          },
+          "format": [
+            "copie certifiée conforme"
+          ]
+        },
+        {
+          "ordre": 7,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Pour la mention « épouse », « veuve » ou « veuf » : copie certifiée conforme de l'acte de mariage, extrait d'acte de naissance du conjoint, extrait d'acte de décès du conjoint",
+            "ar": "لإدراج عبارة \"زوجة\" أو \"أرملة\" أو \"أرمل\": نسخة مطابقة للأصل من عقد الزواج، نسخة من رسم ولادة الزوج، نسخة من رسم وفاة الزوج أو الزوجة",
+            "darija": "باش يتكتب \"زوجة\" ولا \"أرملة\" ولا \"أرمل\": عقد الزواج مصادق عليه، عقد ازدياد الزوج، وشهادة الوفاة",
+            "en": "For the mention \"wife\", \"widow\" or \"widower\": certified marriage certificate, spouse's birth certificate, spouse's death certificate",
+            "pt": "Para a menção \"esposa\", \"viúva\" ou \"viúvo\": certidão de casamento autenticada, certidão de nascimento e de óbito do cônjuge",
+            "es": "Para la mención \"esposa\", \"viuda\" o \"viudo\": acta de matrimonio compulsada, acta de nacimiento y de defunción del cónyuge"
+          },
+          "condition": {
+            "fr": "mention facultative",
+            "ar": "عبارة اختيارية",
+            "darija": "ماشي ضروري",
+            "en": "optional mention",
+            "pt": "menção facultativa",
+            "es": "mención opcional"
+          },
+          "format": [
+            "copie certifiée conforme"
+          ]
+        },
+        {
+          "ordre": 8,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Mineur : présence obligatoire, accompagné du représentant légal muni d'une copie de sa CNIE et d'un document justifiant sa qualité",
+            "ar": "القاصر: حضوره إلزامي مرفوقا بنائبه الشرعي مع نسخة من بطاقته ووثيقة تبرر صفته",
+            "darija": "للصغار: الولد خاصو يحضر مع الولي، والولي يجيب كوبي لاكارط ديالو ووثيقة كتبين الصفة",
+            "en": "Minor: must attend with the legal representative bringing a copy of their CNIE and proof of status",
+            "pt": "Menor: presença obrigatória com o representante legal, cópia do seu CNIE e comprovativo da qualidade",
+            "es": "Menor: presencia obligatoria con el representante legal, copia de su CNIE y justificante de su condición"
+          },
+          "condition": {
+            "fr": "demande pour un mineur",
+            "ar": "إذا كان الطلب لفائدة قاصر",
+            "darija": "إلا كان الطلب لولد صغير",
+            "en": "application for a minor",
+            "pt": "pedido para um menor",
+            "es": "solicitud para un menor"
+          },
+          "format": [
+            "copie CNIE",
+            "justificatif"
+          ]
+        },
+        {
+          "ordre": 9,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Formulaire de pré-demande dûment rempli sur www.cnie.ma",
+            "ar": "استمارة الطلب المسبق معبأة عبر www.cnie.ma",
+            "darija": "الاستمارة ديال الطلب المسبق من www.cnie.ma",
+            "en": "Pre-application form completed on www.cnie.ma",
+            "pt": "Formulário de pré-pedido preenchido em www.cnie.ma",
+            "es": "Formulario de presolicitud cumplimentado en www.cnie.ma"
+          },
+          "condition": {
+            "fr": "si vous avez rempli la pré-demande en ligne",
+            "ar": "في حالة ملء الطلب المسبق",
+            "darija": "إلا عمرتيها فالأنترنيت",
+            "en": "if completed online",
+            "pt": "se preenchido online",
+            "es": "si se rellenó en línea"
+          },
+          "format": [
+            "imprimé signé"
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "fr": "En cas de perte, de vol ou de détérioration, suivre la démarche « CNIE — perte, vol ou détérioration » (déclaration sur l'honneur).",
+          "ar": "في حالة الضياع أو السرقة أو الإتلاف، يرجى اتباع مسطرة \"البطاقة الوطنية — ضياع أو سرقة أو إتلاف\" (تصريح بالشرف).",
+          "darija": "إلا ضاعت ليك ولا تسرقات ولا تخسرات، شوف المسطرة ديال \"الضياع ولا السرقة\" (تصريح بالشرف).",
+          "en": "If the card is lost, stolen or damaged, follow the \"CNIE — loss, theft or damage\" procedure (sworn statement).",
+          "pt": "Em caso de perda, roubo ou deterioração, seguir o procedimento \"CNIE — perda, roubo ou deterioração\" (declaração sob compromisso de honra).",
+          "es": "En caso de pérdida, robo o deterioro, seguir el trámite \"CNIE — pérdida, robo o deterioro\" (declaración jurada)."
+        },
+        {
+          "fr": "La modification ou la suppression des données additionnelles peut s'effectuer à la demande du titulaire, sans édition d'une nouvelle carte.",
+          "ar": "يمكن تعديل أو حذف المعطيات الإضافية بطلب من صاحب البطاقة دون إصدار بطاقة جديدة.",
+          "darija": "المعلومات الإضافية تقدر تبدلها ولا تحيدها بلا ما تدير لاكارط جديدة.",
+          "en": "Additional data can be modified or deleted at the holder's request without issuing a new card.",
+          "pt": "Os dados adicionais podem ser alterados ou suprimidos a pedido do titular, sem emissão de novo cartão.",
+          "es": "Los datos adicionales pueden modificarse o suprimirse a petición del titular, sin expedir una nueva tarjeta."
+        }
+      ],
+      "tarifs": [
+        {
+          "fr": "Droits de timbre : 75 Dhs pour les majeurs et les mineurs de 12 ans révolus et plus ; 50 Dhs pour les mineurs de moins de 12 ans.",
+          "ar": "واجبات التمبر: 75 درهما للبالغين والقاصرين البالغين 12 سنة فما فوق، و50 درهما للقاصرين دون 12 سنة.",
+          "darija": "التمبر: 75 درهم للكبار ومن 12 عام وفوق، و50 درهم تحت 12 عام.",
+          "en": "Stamp duty: 75 MAD for adults and minors aged 12+; 50 MAD for minors under 12.",
+          "pt": "Imposto de selo: 75 MAD para adultos e menores com 12+ anos; 50 MAD para menores de 12 anos.",
+          "es": "Tasa de timbre: 75 MAD para adultos y menores de 12 años o más; 50 MAD para menores de 12 años."
+        }
+      ],
+      "faq": [
+        {
+          "question": {
+            "fr": "Le citoyen est-il censé changer de carte une fois la nouvelle carte lancée ?",
+            "ar": "هل يجب تغيير البطاقة الوطنية عند بداية إصدار البطاقة الجديدة ؟"
+          },
+          "reponse": {
+            "fr": "Non, le citoyen n'est tenu de changer sa CNIE que lorsque sa validité expire ou lorsqu'il doit modifier une ou plusieurs données telle que l'adresse. Toutefois, tout citoyen peut demander sa nouvelle CNIE à tout moment.",
+            "ar": "لا يتوجب على المواطن تغيير بطاقته إلا في حالة انتهاء صلاحيتها أو ضرورة تغيير معلومة أو أكثر كعنوان السكنى. ومع ذلك يمكن لكل مواطن أن يطلب البطاقة الجديدة متى شاء."
+          }
+        },
+        {
+          "question": {
+            "fr": "Quelle est la durée de validité de la CNIE ?",
+            "ar": "ما هي مدة صلاحية البطاقة الوطنية للتعريف الإلكترونية؟"
+          },
+          "reponse": {
+            "fr": "Dix ans pour les citoyens de 12 ans et plus. Pour les mineurs de moins de 12 ans, 7 ans au plus avec une expiration avant le jour où le titulaire atteint 12 ans.",
+            "ar": "10 سنوات بالنسبة للمواطنين الذين يبلغ سنهم 12 سنة فما فوق، و7 سنوات على الأكثر بالنسبة للقاصرين دون 12 سنة وتنتهي صلاحيتها عند بلوغ 12 سنة."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cin-perte-vol-deterioration",
+      "code_portail": "DU",
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "CNIE — perte, vol ou détérioration",
+        "ar": "البطاقة الوطنية للتعريف الإلكترونية — الضياع أو السرقة أو الإتلاف",
+        "darija": "لاكارط الوطنية — ضاعت، تسرقات ولا تخسرات",
+        "en": "CNIE — lost, stolen or damaged card",
+        "pt": "CNIE — perda, roubo ou deterioração",
+        "es": "CNIE — pérdida, robo o deterioro"
+      },
+      "mots_cles": {
+        "fr": [
+          "perte",
+          "perdu",
+          "perdue",
+          "vol",
+          "volée",
+          "détériorée",
+          "abîmée",
+          "cassée",
+          "duplicata",
+          "déclaration sur l'honneur",
+          "code PIN",
+          "PIN oublié",
+          "PIN perdu"
+        ],
+        "ar": [
+          "ضياع",
+          "ضائعة",
+          "سرقة",
+          "مسروقة",
+          "إتلاف",
+          "تالفة",
+          "نظير",
+          "تصريح بالشرف",
+          "القن السري",
+          "الرمز السري"
+        ],
+        "darija": [
+          "ضاعت",
+          "ضاعت ليا",
+          "تسرقات",
+          "سرقوها",
+          "تخسرات",
+          "تقطعات",
+          "مشات ليا لاكارط",
+          "تلفت",
+          "الكود",
+          "كود PIN",
+          "نسيت الكود",
+          "PIN"
+        ],
+        "en": [
+          "lost",
+          "stolen",
+          "damaged",
+          "broken",
+          "replacement",
+          "duplicate",
+          "sworn statement",
+          "PIN code",
+          "forgot PIN"
+        ],
+        "pt": [
+          "perdi",
+          "perdido",
+          "roubado",
+          "danificado",
+          "segunda via",
+          "código PIN"
+        ],
+        "es": [
+          "perdí",
+          "perdido",
+          "robado",
+          "dañado",
+          "duplicado",
+          "código PIN"
+        ]
+      },
+      "administration": "DGSN — Centres d'Enregistrement des Données Identitaires (CEDI)",
+      "delai_jours": null,
+      "cout_mad": 75,
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "Motifs de renouvellement reconnus par le portail : perte, vol, détérioration.",
+          "ar": "دواعي التجديد المعتمدة في البوابة: فقدان، سرقة، حالة تلف.",
+          "darija": "الأسباب اللي كيقبل البورطاي: الضياع، السرقة، ولا التلف.",
+          "en": "Reasons recognised by the portal: loss, theft, damage.",
+          "pt": "Motivos reconhecidos pelo portal: perda, roubo, deterioração.",
+          "es": "Motivos reconocidos por el portal: pérdida, robo, deterioro."
+        },
+        {
+          "fr": "La demande suit la procédure de renouvellement, avec une déclaration sur l'honneur à la place de la restitution de l'ancienne carte.",
+          "ar": "يتبع الطلب مسطرة التجديد، مع الإدلاء بتصريح بالشرف عوض استرجاع البطاقة القديمة.",
+          "darija": "الطلب كيمشي بحال التجديد، غير بلاصة ما ترجع لاكارط القديمة كتعطي تصريح بالشرف.",
+          "en": "The application follows the renewal procedure, with a sworn statement instead of returning the old card.",
+          "pt": "O pedido segue o procedimento de renovação, com declaração sob compromisso de honra em vez da devolução do cartão antigo.",
+          "es": "La solicitud sigue el trámite de renovación, con una declaración jurada en lugar de devolver la tarjeta antigua."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Déclaration sur l'honneur écrite et signée par l'intéressé (ou son représentant légal pour un mineur), ou formulaire préétabli par la DGSN signé",
+            "ar": "تصريح بالشرف محرر وموقع من طرف المعني بالأمر (أو نائبه الشرعي بالنسبة للقاصر) أو توقيع الاستمارة المنجزة مسبقا من طرف مصالح المديرية العامة للأمن الوطني",
+            "darija": "تصريح بالشرف مكتوب وموقع منك (ولا من الولي إلا كان الولد صغير)، ولا توقع الورقة الجاهزة ديال الأمن الوطني",
+            "en": "Sworn statement written and signed by the applicant (or legal representative for a minor), or the DGSN pre-printed form signed",
+            "pt": "Declaração sob compromisso de honra escrita e assinada pelo interessado (ou representante legal de menor), ou formulário pré-impresso da DGSN assinado",
+            "es": "Declaración jurada escrita y firmada por el interesado (o su representante legal si es menor), o el formulario preimpreso de la DGSN firmado"
+          },
+          "condition": null,
+          "format": [
+            "manuscrit signé",
+            "formulaire DGSN"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Certificat de résidence (Police en milieu urbain ; Gendarmerie Royale ou autorité locale en milieu rural)",
+            "ar": "شهادة الإقامة (الأمن الوطني بالوسط الحضري، الدرك الملكي أو السلطة المحلية بالوسط القروي)",
+            "darija": "شهادة السكنى (البوليس فالمدينة، الجدارمية ولا السلطة فالعروبية)",
+            "en": "Certificate of residence (Police in urban areas; Royal Gendarmerie or local authority in rural areas)",
+            "pt": "Certificado de residência (Polícia em zona urbana; Gendarmaria Real ou autoridade local em zona rural)",
+            "es": "Certificado de residencia (Policía en zona urbana; Gendarmería Real o autoridad local en zona rural)"
+          },
+          "condition": {
+            "fr": "résidents au Maroc",
+            "ar": "بالنسبة للمقيمين بالمغرب",
+            "darija": "إلا كنتي ساكن فالمغرب",
+            "en": "residents of Morocco",
+            "pt": "residentes em Marrocos",
+            "es": "residentes en Marruecos"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 3,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Attestation d'immatriculation consulaire mentionnant l'adresse",
+            "ar": "شهادة التسجيل القنصلي متضمنة لعنوان السكنى",
+            "darija": "شهادة التسجيل فالقنصلية فيها العنوان",
+            "en": "Consular registration certificate showing the address",
+            "pt": "Certificado de inscrição consular com a morada",
+            "es": "Certificado de inscripción consular con la dirección"
+          },
+          "condition": {
+            "fr": "Marocains résidant à l'étranger",
+            "ar": "بالنسبة للمغاربة المقيمين بالخارج",
+            "darija": "للمغاربة اللي ساكنين برا",
+            "en": "Moroccans living abroad",
+            "pt": "marroquinos residentes no estrangeiro",
+            "es": "marroquíes residentes en el extranjero"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 4,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Quatre photographies d'identité récentes (6 mois maximum), 35x45 mm, fond gris clair ou bleu clair",
+            "ar": "أربع صور فوتوغرافية للتعريف حديثة لا تتجاوز 6 أشهر، 35×45 ملم، خلفية رمادية أو زرقاء فاتحة",
+            "darija": "4 تصاور ديال التعريف جداد (ما فايتينش 6 شهور)، 35×45 ملم",
+            "en": "Four recent ID photos (max. 6 months old), 35x45 mm, light grey or light blue background",
+            "pt": "Quatro fotografias tipo passe recentes (máx. 6 meses), 35x45 mm, fundo cinzento ou azul claro",
+            "es": "Cuatro fotografías de carné recientes (máx. 6 meses), 35x45 mm, fondo gris o azul claro"
+          },
+          "condition": null,
+          "format": [
+            "photo 35x45mm"
+          ]
+        },
+        {
+          "ordre": 5,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Droits de timbre : 75 Dhs (50 Dhs pour les mineurs de moins de 12 ans)",
+            "ar": "واجبات التمبر: 75 درهما (50 درهما للقاصرين دون 12 سنة)",
+            "darija": "التمبر: 75 درهم (50 درهم للدراري تحت 12 عام)",
+            "en": "Stamp duty: 75 MAD (50 MAD for minors under 12)",
+            "pt": "Imposto de selo: 75 MAD (50 MAD para menores de 12 anos)",
+            "es": "Tasa de timbre: 75 MAD (50 MAD para menores de 12 años)"
+          },
+          "condition": null,
+          "format": [
+            "e-timbre"
+          ]
+        },
+        {
+          "ordre": 6,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Restitution de la carte détériorée",
+            "ar": "استرجاع البطاقة التالفة",
+            "darija": "رجع لاكارط اللي تخسرات",
+            "en": "Return of the damaged card",
+            "pt": "Devolução do cartão danificado",
+            "es": "Devolución de la tarjeta deteriorada"
+          },
+          "condition": {
+            "fr": "en cas de détérioration (carte non perdue ni volée)",
+            "ar": "في حالة الإتلاف (البطاقة غير ضائعة وغير مسروقة)",
+            "darija": "إلا كانت غير مخسرة وماشي ضايعة",
+            "en": "if damaged (not lost or stolen)",
+            "pt": "em caso de deterioração (não perdido nem roubado)",
+            "es": "en caso de deterioro (no perdida ni robada)"
+          },
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 7,
+          "obligatoire": false,
+          "nom": {
+            "fr": "Mineur : présence obligatoire, accompagné du représentant légal muni d'une copie de sa CNIE et d'un document justifiant sa qualité",
+            "ar": "القاصر: حضوره إلزامي مرفوقا بنائبه الشرعي مع نسخة من بطاقته ووثيقة تبرر صفته",
+            "darija": "للصغار: الولد خاصو يحضر مع الولي، والولي يجيب كوبي لاكارط ديالو ووثيقة كتبين الصفة",
+            "en": "Minor: must attend with the legal representative bringing a copy of their CNIE and proof of status",
+            "pt": "Menor: presença obrigatória com o representante legal, cópia do seu CNIE e comprovativo",
+            "es": "Menor: presencia obligatoria con el representante legal, copia de su CNIE y justificante"
+          },
+          "condition": {
+            "fr": "demande pour un mineur",
+            "ar": "إذا كان الطلب لفائدة قاصر",
+            "darija": "إلا كان الطلب لولد صغير",
+            "en": "application for a minor",
+            "pt": "pedido para um menor",
+            "es": "solicitud para un menor"
+          },
+          "format": [
+            "copie CNIE",
+            "justificatif"
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "fr": "Code PIN perdu ou oublié : le titulaire (accompagné de son représentant légal s'il est mineur) s'adresse au centre d'enregistrement des données identitaires le plus proche pour demander sa réinitialisation. Il n'est pas nécessaire de refaire la carte.",
+          "ar": "في حالة ضياع القن السري، يتوجه المعني بالأمر (مرفوقا بنائبه الشرعي بالنسبة للقاصر) إلى أقرب مصلحة مكلفة بإنجاز البطاقة الوطنية لطلب تجديده.",
+          "darija": "إلا نسيتي ولا ضاع ليك الكود PIN، سير لأقرب مركز ديال لاكارط (مع الولي إلا كنتي صغير) باش يعاودو ليك الكود.",
+          "en": "Lost or forgotten PIN code: the holder (with the legal representative for a minor) goes to the nearest identity data registration centre to have it reset.",
+          "pt": "Código PIN perdido ou esquecido: o titular (com o representante legal, se menor) dirige-se ao centro de registo mais próximo para o reinicializar.",
+          "es": "Código PIN perdido u olvidado: el titular (con su representante legal si es menor) acude al centro de registro más cercano para reiniciarlo."
+        }
+      ],
+      "tarifs": [
+        {
+          "fr": "Droits de timbre : 75 Dhs pour les majeurs et les mineurs de 12 ans révolus et plus ; 50 Dhs pour les mineurs de moins de 12 ans.",
+          "ar": "واجبات التمبر: 75 درهما للبالغين والقاصرين البالغين 12 سنة فما فوق، و50 درهما للقاصرين دون 12 سنة.",
+          "darija": "التمبر: 75 درهم للكبار ومن 12 عام وفوق، و50 درهم تحت 12 عام.",
+          "en": "Stamp duty: 75 MAD for adults and minors aged 12+; 50 MAD for minors under 12.",
+          "pt": "Imposto de selo: 75 MAD para adultos e menores com 12+ anos; 50 MAD para menores de 12 anos.",
+          "es": "Tasa de timbre: 75 MAD para adultos y menores de 12 años o más; 50 MAD para menores de 12 años."
+        }
+      ],
+      "faq": [
+        {
+          "question": {
+            "fr": "Comment doit-on procéder en cas de perte du code PIN ?",
+            "ar": "ما الذي يجب فعله في حالة ضياع القن السري للبطاقة الوطنية للتعريف الإلكترونية؟"
+          },
+          "reponse": {
+            "fr": "En cas de perte ou d'oubli du code PIN, le titulaire (accompagné par son représentant légal s'il s'agit d'un mineur) doit s'adresser au centre d'enregistrement des données identitaires le plus proche de son lieu d'habitation pour demander sa réinitialisation.",
+            "ar": "في حالة ضياع القن السري، يجب أن يتوجه المعني بالأمر (مرفوقاً بنائبه الشرعي بالنسبة للقاصر) إلى أقرب مصلحة مكلفة بإنجاز البطاقة الوطنية للتعريف الإلكترونية لطلب تجديده."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cin-mineur",
+      "code_portail": "NR",
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "CNIE pour un mineur (moins de 16 ans)",
+        "ar": "البطاقة الوطنية للتعريف الإلكترونية لفائدة القاصر (أقل من 16 سنة)",
+        "darija": "لاكارط الوطنية للدراري الصغار (تحت 16 عام)",
+        "en": "CNIE for a minor (under 16)",
+        "pt": "CNIE para menor (menos de 16 anos)",
+        "es": "CNIE para un menor (menos de 16 años)"
+      },
+      "mots_cles": {
+        "fr": [
+          "mineur",
+          "enfant",
+          "fils",
+          "fille",
+          "moins de 16 ans",
+          "moins de 12 ans",
+          "représentant légal",
+          "tuteur"
+        ],
+        "ar": [
+          "قاصر",
+          "القاصرين",
+          "طفل",
+          "ابن",
+          "بنت",
+          "النائب الشرعي",
+          "أقل من 16 سنة"
+        ],
+        "darija": [
+          "ولدي",
+          "بنتي",
+          "الدراري",
+          "صغير",
+          "الولد",
+          "لاكارط للولد",
+          "تحت 16"
+        ],
+        "en": [
+          "minor",
+          "child",
+          "son",
+          "daughter",
+          "under 16",
+          "legal guardian"
+        ],
+        "pt": [
+          "menor",
+          "criança",
+          "filho",
+          "filha",
+          "menos de 16"
+        ],
+        "es": [
+          "menor",
+          "niño",
+          "hijo",
+          "hija",
+          "menos de 16"
+        ]
+      },
+      "administration": "DGSN — Centres d'Enregistrement des Données Identitaires (CEDI)",
+      "delai_jours": null,
+      "cout_mad": 50,
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "La CNIE peut être délivrée à tous les mineurs de moins de 16 ans, à la demande de leur représentant légal (elle devient obligatoire à 16 ans).",
+          "ar": "يمكن أن تصدر البطاقة لفائدة القاصرين الذين لا يتجاوز عمرهم 16 سنة بطلب من نائبهم الشرعي (وتصبح إجبارية عند 16 سنة).",
+          "darija": "تقدر تدير لاكارط لولدك ولا بنتك قبل 16 عام، بطلب من الولي (وكتولي واجبة فـ16 عام).",
+          "en": "The CNIE can be issued to any minor under 16 at the request of their legal representative (it becomes mandatory at 16).",
+          "pt": "O CNIE pode ser emitido a qualquer menor de 16 anos a pedido do representante legal (torna-se obrigatório aos 16).",
+          "es": "El CNIE puede expedirse a cualquier menor de 16 años a petición de su representante legal (es obligatorio a los 16)."
+        },
+        {
+          "fr": "La présence du mineur est obligatoire ; il doit être accompagné de son représentant légal.",
+          "ar": "حضور القاصر إلزامي ويجب أن يرافقه نائبه الشرعي.",
+          "darija": "الولد خاصو يحضر بزز، ومعاه الولي ديالو.",
+          "en": "The minor must attend in person, accompanied by the legal representative.",
+          "pt": "A presença do menor é obrigatória, acompanhado do representante legal.",
+          "es": "La presencia del menor es obligatoria, acompañado de su representante legal."
+        },
+        {
+          "fr": "Validité : 7 ans au plus pour les moins de 12 ans, avec expiration avant le 12e anniversaire ; 10 ans à partir de 12 ans.",
+          "ar": "الصلاحية: 7 سنوات على الأكثر لمن تقل أعمارهم عن 12 سنة وتنتهي عند بلوغ 12 سنة؛ 10 سنوات ابتداء من 12 سنة.",
+          "darija": "الصلاحية: 7 سنين على الأكثر تحت 12 عام وكتسالي فـ12 عام؛ و10 سنين من 12 عام وفوق.",
+          "en": "Validity: at most 7 years under 12, expiring before the 12th birthday; 10 years from age 12.",
+          "pt": "Validade: no máximo 7 anos para menores de 12, expirando antes dos 12 anos; 10 anos a partir dos 12.",
+          "es": "Validez: como máximo 7 años para menores de 12, venciendo antes de los 12; 10 años a partir de los 12."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Copie de la CNIE du représentant légal",
+            "ar": "نسخة من البطاقة الوطنية للتعريف الإلكترونية للنائب الشرعي",
+            "darija": "كوبي ديال لاكارط ديال الولي",
+            "en": "Copy of the legal representative's CNIE",
+            "pt": "Cópia do CNIE do representante legal",
+            "es": "Copia del CNIE del representante legal"
+          },
+          "condition": null,
+          "format": [
+            "copie"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Document justifiant la qualité de représentant légal",
+            "ar": "وثيقة تبرر صفة النائب الشرعي",
+            "darija": "وثيقة كتبين بلي نتا الولي ديالو",
+            "en": "Document proving legal representative status",
+            "pt": "Documento que comprove a qualidade de representante legal",
+            "es": "Documento que acredite la condición de representante legal"
+          },
+          "condition": null,
+          "format": [
+            "original",
+            "copie"
+          ]
+        },
+        {
+          "ordre": 3,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Copie de la page du mineur dans le livret de famille (avec présentation du livret), ou copie intégrale de l'état civil, ou extrait d'acte de naissance (moins de 3 mois, en arabe et en latin)",
+            "ar": "نسخة من صفحة القاصر بالدفتر العائلي مع تقديمه، أو نسخة كاملة من سجل الحالة المدنية، أو نسخة من رسم الولادة (لا تتجاوز ثلاثة أشهر، بالعربية واللاتينية)",
+            "darija": "كوبي ديال الصفحة ديال الولد فالدفتر العائلي (وجيب الدفتر)، ولا عقد الازدياد (ما فايتش 3 شهور، بالعربية والفرنسية)",
+            "en": "Copy of the minor's page in the family record book (showing the book), or full civil status copy, or birth certificate extract (less than 3 months, Arabic and Latin)",
+            "pt": "Cópia da página do menor no livro de família (apresentando-o), ou cópia integral do registo civil, ou certidão de nascimento (menos de 3 meses, árabe e latim)",
+            "es": "Copia de la página del menor en el libro de familia (presentándolo), o copia íntegra del registro civil, o acta de nacimiento (menos de 3 meses, árabe y latín)"
+          },
+          "condition": null,
+          "format": [
+            "copie",
+            "original"
+          ]
+        },
+        {
+          "ordre": 4,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Certificat de résidence (ou attestation d'immatriculation consulaire pour les MRE)",
+            "ar": "شهادة الإقامة (أو شهادة التسجيل القنصلي بالنسبة للمغاربة المقيمين بالخارج)",
+            "darija": "شهادة السكنى (ولا شهادة القنصلية للجالية)",
+            "en": "Certificate of residence (or consular registration certificate for Moroccans abroad)",
+            "pt": "Certificado de residência (ou certificado consular para residentes no estrangeiro)",
+            "es": "Certificado de residencia (o certificado consular para residentes en el extranjero)"
+          },
+          "condition": null,
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 5,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Quatre photographies d'identité récentes du mineur (6 mois maximum), 35x45 mm, fond gris clair ou bleu clair",
+            "ar": "أربع صور فوتوغرافية حديثة للقاصر لا تتجاوز 6 أشهر، 35×45 ملم، خلفية رمادية أو زرقاء فاتحة",
+            "darija": "4 تصاور جداد ديال الولد (ما فايتينش 6 شهور)، 35×45 ملم",
+            "en": "Four recent ID photos of the minor (max. 6 months old), 35x45 mm, light grey or light blue background",
+            "pt": "Quatro fotografias recentes do menor (máx. 6 meses), 35x45 mm, fundo cinzento ou azul claro",
+            "es": "Cuatro fotografías recientes del menor (máx. 6 meses), 35x45 mm, fondo gris o azul claro"
+          },
+          "condition": null,
+          "format": [
+            "photo 35x45mm"
+          ]
+        },
+        {
+          "ordre": 6,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Droits de timbre : 50 Dhs pour un mineur de moins de 12 ans ; 75 Dhs à partir de 12 ans révolus",
+            "ar": "واجبات التمبر: 50 درهما للقاصر دون 12 سنة، و75 درهما ابتداء من 12 سنة كاملة",
+            "darija": "التمبر: 50 درهم تحت 12 عام، و75 درهم من 12 عام وفوق",
+            "en": "Stamp duty: 50 MAD for a minor under 12; 75 MAD from age 12",
+            "pt": "Imposto de selo: 50 MAD para menor de 12 anos; 75 MAD a partir dos 12",
+            "es": "Tasa de timbre: 50 MAD para menor de 12 años; 75 MAD a partir de los 12"
+          },
+          "condition": null,
+          "format": [
+            "e-timbre"
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "fr": "En cas de perte, d'altération ou de vol de la CNIE d'un mineur, la déclaration sur l'honneur est établie par son représentant légal.",
+          "ar": "في حالة ضياع أو إتلاف أو سرقة بطاقة القاصر، يحرر التصريح بالشرف من طرف نائبه الشرعي.",
+          "darija": "إلا ضاعت لاكارط ديال الولد ولا تسرقات، الولي هو اللي كيكتب التصريح بالشرف.",
+          "en": "If a minor's CNIE is lost, damaged or stolen, the sworn statement is made by the legal representative.",
+          "pt": "Em caso de perda, deterioração ou roubo do CNIE de um menor, a declaração é feita pelo representante legal.",
+          "es": "En caso de pérdida, deterioro o robo del CNIE de un menor, la declaración jurada la realiza su representante legal."
+        }
+      ],
+      "tarifs": [
+        {
+          "fr": "Droits de timbre : 50 Dhs pour les mineurs de moins de 12 ans ; 75 Dhs pour les mineurs de 12 ans révolus et plus.",
+          "ar": "واجبات التمبر: 50 درهما للقاصرين دون 12 سنة، و75 درهما للقاصرين البالغين 12 سنة كاملة فما فوق.",
+          "darija": "التمبر: 50 درهم للدراري تحت 12 عام، و75 درهم من 12 عام وفوق.",
+          "en": "Stamp duty: 50 MAD for minors under 12; 75 MAD for minors aged 12 and over.",
+          "pt": "Imposto de selo: 50 MAD para menores de 12 anos; 75 MAD para menores com 12 anos ou mais.",
+          "es": "Tasa de timbre: 50 MAD para menores de 12 años; 75 MAD para menores de 12 años cumplidos o más."
+        }
+      ],
+      "faq": [
+        {
+          "question": {
+            "fr": "Est-ce que la CNIE peut être délivrée aux mineurs ?",
+            "ar": "هل يمكن إصدار بطاقة وطنية للتعريف الإلكترونية لفائدة القاصرين ؟"
+          },
+          "reponse": {
+            "fr": "Oui, la CNIE peut être délivrée à tous les mineurs.",
+            "ar": "نعم، يمكن أن تصدر البطاقة الوطنية للتعريف الإلكترونية لفائدة القاصرين."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "cin-cas-particuliers",
+      "code_portail": null,
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "CNIE — cas particuliers (personnes handicapées, alitées ou malades)",
+        "ar": "البطاقة الوطنية للتعريف الإلكترونية — الحالات الخاصة (الأشخاص في وضعية إعاقة أو طريحو الفراش أو المرضى)",
+        "darija": "لاكارط الوطنية — حالات خاصة (الناس اللي عندهم إعاقة ولا مراض ما يقدروش يتحركو)",
+        "en": "CNIE — special cases (disabled, bedridden or ill persons)",
+        "pt": "CNIE — casos especiais (pessoas com deficiência, acamadas ou doentes)",
+        "es": "CNIE — casos particulares (personas con discapacidad, encamadas o enfermas)"
+      },
+      "mots_cles": {
+        "fr": [
+          "handicap",
+          "handicapé",
+          "alité",
+          "malade",
+          "hôpital",
+          "domicile",
+          "personne âgée",
+          "ne peut pas se déplacer",
+          "cas particulier"
+        ],
+        "ar": [
+          "إعاقة",
+          "طريح الفراش",
+          "مريض",
+          "المستشفى",
+          "محل الإقامة",
+          "حالات خاصة",
+          "لا يستطيع التنقل"
+        ],
+        "darija": [
+          "معاق",
+          "مريض",
+          "ناعس فالفراش",
+          "السبيطار",
+          "ما يقدرش يتحرك",
+          "فالدار",
+          "شيباني"
+        ],
+        "en": [
+          "disabled",
+          "disability",
+          "bedridden",
+          "sick",
+          "hospital",
+          "at home",
+          "cannot travel",
+          "elderly"
+        ],
+        "pt": [
+          "deficiência",
+          "acamado",
+          "doente",
+          "hospital",
+          "domicílio"
+        ],
+        "es": [
+          "discapacidad",
+          "encamado",
+          "enfermo",
+          "hospital",
+          "domicilio"
+        ]
+      },
+      "administration": "DGSN — service de la CNIE le plus proche du lieu de résidence",
+      "delai_jours": null,
+      "cout_mad": 75,
+      "source_url": "https://www.cnie.ma/pages/practical-informations",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "Les personnes en situation de handicap, alitées ou souffrant d'une maladie immobilisante peuvent bénéficier d'une dérogation pour accomplir les formalités à domicile ou dans l'établissement hospitalier qui les accueille.",
+          "ar": "يمكن للأشخاص في وضعية إعاقة أو طريحي الفراش أو المصابين بأمراض تعوق حركتهم الاستفادة من مسطرة استثنائية لإتمام الإجراءات بمحل إقامتهم أو داخل المؤسسة الاستشفائية.",
+          "darija": "الناس اللي عندهم إعاقة، ولا ناعسين فالفراش، ولا مراض ما يقدروش يتحركو، يقدرو يديرو لاكارط فالدار ولا فالسبيطار.",
+          "en": "People with disabilities, bedridden or suffering from an immobilising illness may complete the formalities at home or in the hospital caring for them.",
+          "pt": "Pessoas com deficiência, acamadas ou com doença imobilizante podem tratar das formalidades em casa ou no hospital onde se encontram.",
+          "es": "Las personas con discapacidad, encamadas o con una enfermedad inmovilizante pueden realizar los trámites en su domicilio o en el hospital donde se encuentran."
+        },
+        {
+          "fr": "Le formulaire « Cas particuliers » est rempli par le bénéficiaire ou son représentant et déposé au service de la CNIE le plus proche du lieu de résidence. Un rendez-vous est fixé et un agent se déplace à l'adresse indiquée.",
+          "ar": "تملأ استمارة \"الحالات الخاصة\" من طرف المعني بالأمر أو من ينوب عنه وتودع لدى أقرب مصلحة للبطاقة الوطنية، ثم يحدد موعد لانتقال موظف إلى العنوان المشار إليه.",
+          "darija": "كتعمر الاستمارة ديال \"الحالات الخاصة\" (نتا ولا شي حد من عائلتك) وكتحطها فأقرب مصلحة ديال لاكارط، ومن بعد كيعطيوك موعد ويجي عندك موظف.",
+          "en": "The \"Special cases\" form is filled in by the beneficiary or their representative and filed at the nearest CNIE service. An appointment is set and an officer visits the address given.",
+          "pt": "O formulário \"Casos especiais\" é preenchido pelo beneficiário ou representante e entregue no serviço CNIE mais próximo. É marcada uma data e um agente desloca-se à morada indicada.",
+          "es": "El formulario \"Casos particulares\" lo rellena el beneficiario o su representante y se entrega en el servicio CNIE más cercano. Se fija una cita y un agente se desplaza a la dirección indicada."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Formulaire « Cas particuliers » rempli (téléchargeable sur www.cnie.ma)",
+            "ar": "استمارة \"الحالات الخاصة\" معبأة (قابلة للتحميل من www.cnie.ma)",
+            "darija": "الاستمارة ديال \"الحالات الخاصة\" معمرة (كاينة فـwww.cnie.ma)",
+            "en": "Completed \"Special cases\" form (downloadable on www.cnie.ma)",
+            "pt": "Formulário \"Casos especiais\" preenchido (disponível em www.cnie.ma)",
+            "es": "Formulario \"Casos particulares\" cumplimentado (descargable en www.cnie.ma)"
+          },
+          "condition": null,
+          "format": [
+            "formulaire"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Document justifiant l'incapacité de se déplacer aux services de la CNIE",
+            "ar": "وثيقة تثبت أن المعني بالأمر في حالة صحية تمنعه من التنقل إلى مقر مصالح البطاقة الوطنية",
+            "darija": "وثيقة (شهادة طبية) كتبين بلي ما تقدرش تمشي للمصلحة",
+            "en": "Document proving inability to travel to the CNIE services",
+            "pt": "Documento que comprove a impossibilidade de se deslocar aos serviços CNIE",
+            "es": "Documento que acredite la imposibilidad de desplazarse a los servicios CNIE"
+          },
+          "condition": null,
+          "format": [
+            "original"
+          ]
+        },
+        {
+          "ordre": 3,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Les autres pièces restent les mêmes que pour une première demande ou un renouvellement, selon le cas",
+            "ar": "باقي الوثائق هي نفسها المطلوبة في الطلب لأول مرة أو التجديد حسب الحالة",
+            "darija": "باقي الوراق هوما نفسهم ديال أول مرة ولا التجديد",
+            "en": "All other documents are the same as for a first application or a renewal, as applicable",
+            "pt": "Os restantes documentos são os mesmos do primeiro pedido ou da renovação, conforme o caso",
+            "es": "Los demás documentos son los mismos que para una primera solicitud o renovación, según el caso"
+          },
+          "condition": null,
+          "format": []
+        }
+      ],
+      "exceptions": [],
+      "tarifs": [],
+      "faq": []
+    },
+    {
+      "slug": "cin-pre-demande-en-ligne",
+      "code_portail": null,
+      "categorie": "identite",
+      "statut": "production",
+      "version": 1,
+      "actif": true,
+      "titres": {
+        "fr": "CNIE — pré-demande en ligne, rendez-vous et suivi sur cnie.ma",
+        "ar": "البطاقة الوطنية — الطلب المسبق عبر الإنترنت والموعد وتتبع الطلب على cnie.ma",
+        "darija": "لاكارط الوطنية — الطلب فالأنترنيت، الموعد وتتبع الطلب فـcnie.ma",
+        "en": "CNIE — online pre-application, appointment and tracking on cnie.ma",
+        "pt": "CNIE — pré-pedido online, marcação e acompanhamento em cnie.ma",
+        "es": "CNIE — presolicitud en línea, cita y seguimiento en cnie.ma"
+      },
+      "mots_cles": {
+        "fr": [
+          "pré-demande",
+          "en ligne",
+          "rendez-vous",
+          "rdv",
+          "suivi",
+          "statut",
+          "numéro de demande",
+          "site",
+          "internet",
+          "cnie.ma"
+        ],
+        "ar": [
+          "الطلب المسبق",
+          "الموعد",
+          "تتبع الطلب",
+          "رقم الطلب",
+          "البوابة",
+          "الموقع"
+        ],
+        "darija": [
+          "الموعد",
+          "رونديفو",
+          "نتبع الطلب",
+          "فالأنترنيت",
+          "السيت",
+          "نسيت رقم الطلب"
+        ],
+        "en": [
+          "pre-application",
+          "online",
+          "appointment",
+          "track",
+          "status",
+          "application number",
+          "website"
+        ],
+        "pt": [
+          "pré-pedido",
+          "online",
+          "marcação",
+          "acompanhar",
+          "estado",
+          "site"
+        ],
+        "es": [
+          "presolicitud",
+          "en línea",
+          "cita",
+          "seguimiento",
+          "estado",
+          "sitio web"
+        ]
+      },
+      "administration": "DGSN — portail www.cnie.ma",
+      "delai_jours": null,
+      "cout_mad": 0,
+      "source_url": "https://www.cnie.ma/static/faq",
+      "valide_par": null,
+      "conditions": [
+        {
+          "fr": "Le portail permet de créer une pré-demande (première délivrance ou renouvellement), de prendre rendez-vous auprès du centre le plus proche et de vérifier le statut de sa demande.",
+          "ar": "تمكن البوابة من القيام بطلب مسبق (إنجاز لأول مرة أو تجديد)، وأخذ موعد لدى أقرب مركز، والتأكد من وضعية الطلب.",
+          "darija": "فالسيت cnie.ma تقدر دير الطلب المسبق (أول مرة ولا تجديد)، تاخد موعد فأقرب مركز، وتتبع الطلب ديالك.",
+          "en": "The portal lets you create a pre-application (first issue or renewal), book an appointment at the nearest centre and check your application status.",
+          "pt": "O portal permite criar um pré-pedido (primeira emissão ou renovação), marcar atendimento no centro mais próximo e verificar o estado do pedido.",
+          "es": "El portal permite crear una presolicitud (primera expedición o renovación), pedir cita en el centro más cercano y consultar el estado de la solicitud."
+        },
+        {
+          "fr": "Étapes : 1) « Créer votre pré-demande » et choisir le type ; 2) remplir les champs obligatoires ; 3) choisir le centre de dépôt, la date et le créneau ; 4) vérifier le récapitulatif et valider — un numéro de demande de 8 caractères est généré.",
+          "ar": "المراحل: 1) الضغط على \"تعبئة الطلب المسبق\" واختيار نوعه؛ 2) ملء الخانات الضرورية؛ 3) اختيار مركز الإيداع وتاريخ وتوقيت الموعد؛ 4) التأكد من الملخص وتأكيد الاستمارة، ويمنح رقم طلب من 8 حروف.",
+          "darija": "الخطوات: 1) ضغط على \"تعبئة الطلب المسبق\" وختار النوع؛ 2) عمر الخانات؛ 3) ختار المركز والنهار والساعة؛ 4) تأكد من الملخص وصادق، وكيعطيوك رقم ديال 8 حروف.",
+          "en": "Steps: 1) click \"Create your pre-application\" and choose the type; 2) fill in the required fields; 3) choose the filing centre, date and time slot; 4) check the summary and submit — an 8-character application number is generated.",
+          "pt": "Passos: 1) \"Criar o seu pré-pedido\" e escolher o tipo; 2) preencher os campos obrigatórios; 3) escolher o centro, a data e o horário; 4) verificar o resumo e validar — é gerado um número de 8 caracteres.",
+          "es": "Pasos: 1) «Crear su presolicitud» y elegir el tipo; 2) rellenar los campos obligatorios; 3) elegir el centro, la fecha y la franja horaria; 4) verificar el resumen y validar — se genera un número de 8 caracteres."
+        },
+        {
+          "fr": "Les rendez-vous du samedi sont consacrés uniquement aux citoyens dont les cartes sont expirées.",
+          "ar": "مواعيد يوم السبت مخصصة فقط للمواطنين الذين انتهت صلاحية بطائقهم.",
+          "darija": "المواعيد ديال نهار السبت غير للناس اللي سالات ليهم لاكارط.",
+          "en": "Saturday appointments are reserved for citizens whose cards have expired.",
+          "pt": "As marcações ao sábado são reservadas a cidadãos com cartões expirados.",
+          "es": "Las citas del sábado están reservadas a ciudadanos cuya tarjeta ha caducado."
+        }
+      ],
+      "documents": [
+        {
+          "ordre": 1,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Code e-timbre valide (16 chiffres) acheté en ligne",
+            "ar": "رمز التمبر الإلكتروني صالح (16 رقما) مقتنى عبر الإنترنت",
+            "darija": "كود التمبر الإلكتروني (16 رقم) مشري فالأنترنيت",
+            "en": "Valid e-stamp code (16 digits) bought online",
+            "pt": "Código de selo eletrónico válido (16 dígitos) comprado online",
+            "es": "Código de timbre electrónico válido (16 dígitos) comprado en línea"
+          },
+          "condition": null,
+          "format": [
+            "e-timbre"
+          ]
+        },
+        {
+          "ordre": 2,
+          "obligatoire": true,
+          "nom": {
+            "fr": "Numéro de pré-demande et date de naissance (pour suivre, compléter ou modifier le rendez-vous)",
+            "ar": "رقم الطلب المسبق وتاريخ الازدياد (لتتبع الطلب أو إتمامه أو تغيير الموعد)",
+            "darija": "رقم الطلب وتاريخ الزيادة (باش تتبع ولا تبدل الموعد)",
+            "en": "Pre-application number and date of birth (to track, complete or change the appointment)",
+            "pt": "Número do pré-pedido e data de nascimento (para acompanhar, completar ou alterar a marcação)",
+            "es": "Número de presolicitud y fecha de nacimiento (para seguir, completar o cambiar la cita)"
+          },
+          "condition": null,
+          "format": []
+        }
+      ],
+      "exceptions": [
+        {
+          "fr": "Numéro de demande oublié : le suivi reste possible avec le numéro de CNIE et la date de naissance, mais il est impossible de compléter la demande ou de retélécharger le formulaire sans le numéro de demande.",
+          "ar": "في حالة نسيان رقم الطلب يمكن تتبع وضعيته برقم البطاقة الوطنية وتاريخ الازدياد، لكن لا يمكن إتمام الطلب أو تحميل الاستمارة من جديد بدون رقم الطلب.",
+          "darija": "إلا نسيتي رقم الطلب، تقدر تتبع برقم لاكارط وتاريخ الزيادة، ولكن ما تقدرش تكمل الطلب ولا تعاود تحمل الاستمارة بلا الرقم.",
+          "en": "Forgotten application number: tracking is still possible with the CNIE number and date of birth, but the application cannot be completed nor the form downloaded again without it.",
+          "pt": "Número do pedido esquecido: pode acompanhar com o número do CNIE e a data de nascimento, mas não pode completar o pedido nem voltar a descarregar o formulário sem ele.",
+          "es": "Número de solicitud olvidado: se puede seguir con el número de CNIE y la fecha de nacimiento, pero no completar la solicitud ni volver a descargar el formulario sin él."
+        },
+        {
+          "fr": "Une pré-demande enregistrée ne peut plus être modifiée : en cas d'erreur, il faut créer une nouvelle demande. Pour prendre un nouveau rendez-vous, il faut d'abord annuler le premier.",
+          "ar": "بمجرد تسجيل الطلب المسبق لا يمكن تعديله؛ في حالة الخطأ يجب إنجاز طلب جديد. ومن أجل أخذ موعد جديد لا بد من إلغاء الموعد السابق.",
+          "darija": "ملي كيتسجل الطلب ما بقاش يتبدل؛ إلا غلطتي دير طلب جديد. وباش تاخد موعد جديد خاصك تلغي الأول.",
+          "en": "A saved pre-application cannot be changed: in case of error, create a new one. To book a new appointment, first cancel the existing one.",
+          "pt": "Um pré-pedido registado não pode ser alterado: em caso de erro, crie um novo. Para nova marcação, cancele primeiro a anterior.",
+          "es": "Una presolicitud registrada no puede modificarse: en caso de error, cree una nueva. Para una nueva cita, anule primero la anterior."
+        },
+        {
+          "fr": "Modifier un rendez-vous : « Suivre ou compléter votre demande », saisir le numéro de pré-demande et la date de naissance, cliquer sur « Modifier le rendez-vous », choisir la date et le créneau puis « Enregistrer ».",
+          "ar": "تغيير الموعد: الضغط على \"تتبع أو إتمام الطلب\" وإدخال رقم الطلب المسبق وتاريخ الميلاد، ثم \"تغيير الموعد\"، واختيار التاريخ والوقت ثم \"حفظ\".",
+          "darija": "باش تبدل الموعد: \"تتبع أو إتمام الطلب\"، دخل رقم الطلب وتاريخ الزيادة، ضغط \"تغيير الموعد\"، ختار النهار والساعة ومن بعد \"حفظ\".",
+          "en": "Change an appointment: \"Track or complete your application\", enter the pre-application number and date of birth, click \"Change appointment\", pick the date and slot, then \"Save\".",
+          "pt": "Alterar marcação: \"Acompanhar ou completar o pedido\", introduzir número e data de nascimento, clicar em \"Alterar marcação\", escolher data e horário e \"Guardar\".",
+          "es": "Cambiar la cita: «Seguir o completar su solicitud», introducir el número y la fecha de nacimiento, pulsar «Modificar la cita», elegir fecha y franja y «Guardar»."
+        }
+      ],
+      "tarifs": [],
+      "faq": [
+        {
+          "question": {
+            "fr": "Comment le citoyen peut-il vérifier le statut de sa demande ?",
+            "ar": "كيف يمكن للمواطن أن يتأكد من وضعية طلبه؟"
+          },
+          "reponse": {
+            "fr": "Cliquer sur « Suivre ou compléter votre demande », insérer le numéro de demande ou, à défaut, le numéro de la CNIE, et la date de naissance, puis « Rechercher ». Une notification e-mail ou SMS informe le demandeur de la disponibilité de sa carte.",
+            "ar": "الضغط على زر \"تتبع أو إتمام الطلب\"، وإدخال رقم الطلب أو عند عدم توفره رقم البطاقة الوطنية وتاريخ الازدياد، ثم الضغط على \"بحث\". ويوجه إشعار عبر البريد الإلكتروني أو رسالة قصيرة لإخبار صاحب الطلب بجاهزية بطاقته."
+          }
+        },
+        {
+          "question": {
+            "fr": "Comment télécharger de nouveau le formulaire de pré-demande ?",
+            "ar": "كيف يمكن تحميل استمارة الطلب المسبق من جديد؟"
+          },
+          "reponse": {
+            "fr": "Via le service de suivi des demandes, à condition de renseigner le numéro de la demande.",
+            "ar": "عبر خدمة تتبع الطلب، مع ضرورة إدخال رقم الطلب."
+          }
+        }
+      ]
+    }
+  ]
+}

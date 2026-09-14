@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  background: #0d0d20;
+  color: #f4f1e8;
+  font-size: 18px;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+:focus-visible {
+  outline: 3px solid #c9a84c;
+  outline-offset: 3px;
+}
+
+/* Clavier virtuel (react-simple-keyboard) aux couleurs de la borne. */
+.simple-keyboard.hg-theme-default {
+  background: #15152e;
+  border-radius: 16px;
+  padding: 10px;
+  font-family: inherit;
+}
+.simple-keyboard .hg-button {
+  height: 64px;
+  font-size: 24px;
+  background: #2a2a52;
+  color: #f4f1e8;
+  border-bottom: 2px solid #0d0d20;
+}
+.simple-keyboard .hg-button:active {
+  background: #2a9d8f;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

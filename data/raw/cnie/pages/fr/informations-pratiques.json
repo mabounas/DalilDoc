@@ -1,0 +1,32 @@
+{
+  "slug": "informations-pratiques",
+  "categorie": "information",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/pages/practical-informations",
+  "titre": "Cas particuliers - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "CAS PARTICULIERS"
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "Les personnes en situation de handicap, alitées ou souffrant d'une maladie immobilisante peuvent bénéficier d'une dérogation leur accordant la possibilité d'accomplir les formalités d'obtention de la CNIE à leurs domiciles ou au sein des établissements hospitaliers les accueillant."
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "Pour bénéficier du droit à la procédure spéciale d'obtention de la CNIE, le formulaire \"Cas particuliers\" doit être soigneusement rempli par le bénéficiaire ou son représentant, et déposé auprès du service de la CNIE le plus proche du lieu de résidence du bénéficiaire. Un rendez-vous est fixé pour qu'un agent de CNIE se déplace à l'adresse indiquée sur le formulaire \"Cas particuliers\" afin d'accomplir les formalités nécessaires."
+    },
+    {
+      "tag": "p",
+      "depth": 0,
+      "text": "A l'exception d'un document justifiant l'incapacité du postulant de se déplacer aux sièges des services de la CNIE et devant être joint au formulaire \"Cas particuliers\", les pièces à fournir dans la procédure spéciale d'obtention de la CNIE restent les mêmes selon le cas.\""
+    }
+  ],
+  "texte": "CAS PARTICULIERSLes personnes en situation de handicap, alitées ou souffrant d'une maladie immobilisante peuvent bénéficier d'une dérogation leur accordant la possibilité d'accomplir les formalités d'obtention de la CNIE à leurs domiciles ou au sein des établissements hospitaliers les accueillant. Pour bénéficier du droit à la procédure spéciale d'obtention de la CNIE, le formulaire \"Cas particuliers\" doit être soigneusement rempli par le bénéficiaire ou son représentant, et déposé auprès du service de la CNIE le plus proche du lieu de résidence du bénéficiaire. Un rendez-vous est fixé pour qu'un agent de CNIE se déplace à l'adresse indiquée sur le formulaire \"Cas particuliers\" afin d'accomplir les formalités nécessaires. A l'exception d'un document justifiant l'incapacité du postulant de se déplacer aux sièges des services de la CNIE et devant être joint au formulaire \"Cas particuliers\", les pièces à fournir dans la procédure spéciale d'obtention de la CNIE restent les mêmes selon le cas.\" Remplir le formulaireTélécharger l'exemplaire",
+  "sha256": "cb8571054eaf0db1e5ba0af0ab31be429b74b8c81cbf260f10f6ab2de325d468",
+  "collecte_le": "2026-09-13T18:38:21.908573+00:00"
+}

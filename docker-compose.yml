@@ -1,0 +1,81 @@
+# WathiqaDoc — déploiement multi-services (CDC §10, PROMPT 13)
+# Usage : cp .env.example .env && docker compose up -d --build
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d:ro
+    environment:
+      POSTGRES_DB: wathiqadoc
+      POSTGRES_USER: ${DB_USER:-wathiqa}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD requis}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-wathiqa} -d wathiqadoc"]
+      interval: 10s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.4
+    restart: unless-stopped
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    ports:
+      - "127.0.0.1:6333:6333"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-wathiqa}:${DB_PASSWORD}@postgres:5432/wathiqadoc
+      QDRANT_URL: http://qdrant:6333
+      REDIS_URL: redis://redis:6379
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3001}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+      redis:
+        condition: service_started
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+        NEXT_PUBLIC_KIOSK_MODE: "true"
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_BORNE_ID: ${BORNE_ID:-borne-01}
+    depends_on: [api]
+    ports:
+      - "3000:3000"
+
+  admin:
+    build:
+      context: ./admin
+      args:
+        VITE_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+    restart: unless-stopped
+    depends_on: [api]
+    ports:
+      - "3001:3001"
+
+volumes:
+  pgdata:
+  qdrant_storage:
+  redis_data:

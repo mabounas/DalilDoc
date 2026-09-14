@@ -1,0 +1,272 @@
+[
+  {
+    "id": "303",
+    "categoryFunctionName": "ACTIVITES VETERINAIRES",
+    "arabicCategoryFunctionName": "الأنشطة البيطرية"
+  },
+  {
+    "id": "304",
+    "categoryFunctionName": "ACTIVITE DES MEDECINS ET DES DENTISTES",
+    "arabicCategoryFunctionName": "أنشطة الأطباء و أطباء الأسنان"
+  },
+  {
+    "id": "305",
+    "categoryFunctionName": "ACTIVITE POUR LA SANTE HUMAINE ET INDUSTRIE PHARMACEUTIQUE",
+    "arabicCategoryFunctionName": "أنشطة لضمان صحة الإنسان و الصناعة الصيدلانية"
+  },
+  {
+    "id": "311",
+    "categoryFunctionName": "ENSEIGNEMENT PRIMAIRE, SECONDAIRE ET SUPERIEUR",
+    "arabicCategoryFunctionName": "التعليم الإبتدائي الثانوي و العالي"
+  },
+  {
+    "id": "312",
+    "categoryFunctionName": "ACTIVITES DES ORGANISATIONS ASSOCIATIVES",
+    "arabicCategoryFunctionName": "أنشطة المنظمات الجمعوية"
+  },
+  {
+    "id": "313",
+    "categoryFunctionName": "INFORMATION ET COMMUNICATION",
+    "arabicCategoryFunctionName": "الإعلام و الإتصال"
+  },
+  {
+    "id": "315",
+    "categoryFunctionName": "ACTIVITES CREATIVES, ARTISTIQUES ET DE SPECTALE",
+    "arabicCategoryFunctionName": "أنشطة الإبداع الفني و أنشطة العروض"
+  },
+  {
+    "id": "316",
+    "categoryFunctionName": "ACTIVITES SPORTIVES, RECREATIVES ET DE LOISIRS",
+    "arabicCategoryFunctionName": "الأنشطة الرياضية و الترفيهية"
+  },
+  {
+    "id": "327",
+    "categoryFunctionName": "ACTIVITES DE POSTE ET DE COURRIER",
+    "arabicCategoryFunctionName": "أنشطة خدمات البريد"
+  },
+  {
+    "id": "328",
+    "categoryFunctionName": "TELECOMMUNICATION",
+    "arabicCategoryFunctionName": "الاتصالات"
+  },
+  {
+    "id": "334",
+    "categoryFunctionName": "ACTIVITES DES AGENCES DE VOYAGE, VOYAGISTES, SERVICES DE RESERVATION ET ACTIVITES CONNEXES",
+    "arabicCategoryFunctionName": "أنشطة وكالات الأسفار و منظمي الرحلات السياحية و خدمات الحجز و الأنشطة المرتبطة بها"
+  },
+  {
+    "id": "341",
+    "categoryFunctionName": "RESTAURATION",
+    "arabicCategoryFunctionName": "المطاعم"
+  },
+  {
+    "id": "343",
+    "categoryFunctionName": "ACTIVITES DE NETTOYAGE",
+    "arabicCategoryFunctionName": "أنشطة التنظيف"
+  },
+  {
+    "id": "347",
+    "categoryFunctionName": "ACTIVITES DE SERVICES ADMINISTRATIFS ET DE SOUTIEN",
+    "arabicCategoryFunctionName": "أنشطة الخدمات الإدارية و خدمات الدعم"
+  },
+  {
+    "id": "358",
+    "categoryFunctionName": "INDUSTRIE DE L'HABILLEMENT ET FABRICATION DE TEXTILES",
+    "arabicCategoryFunctionName": "صناعة النسيج و صناعة الملابس"
+  },
+  {
+    "id": "359",
+    "categoryFunctionName": "INDUSTRIE DU CUIR ET DE LA CHAUSSURE (TANNEURS, PEAUSSIERS, MEGISSIERS)",
+    "arabicCategoryFunctionName": "صناعة الجلد و الأحذية"
+  },
+  {
+    "id": "360",
+    "categoryFunctionName": "INDUSTRIE ALIMENTAIRE ET FABRICATION DE BOISSON",
+    "arabicCategoryFunctionName": "صناعة الأغدية و صناعة المشروبات"
+  },
+  {
+    "id": "366",
+    "categoryFunctionName": "ACTIVITES DE METALLURGIE",
+    "arabicCategoryFunctionName": "أنشطة التعدين"
+  },
+  {
+    "id": "369",
+    "categoryFunctionName": "PRODUCTION DE FILMS CINEMATOGRAPHIQUES, DE VIDEO ET DE PROGRAMMES DE TELEVISION, ENREGISTREMENT SONORE ET EDITION MUSICALE",
+    "arabicCategoryFunctionName": "إنتاج الأفلام و الفيديو و برامج التلفزيون و نشر التسجيلات الصوتية و الموسيقية"
+  },
+  {
+    "id": "370",
+    "categoryFunctionName": "TRAVAUX D'INSTALLATION ELECTRIQUE, PLOMBERIE ET AUTRES TRAVAUX D'INSTALLATION",
+    "arabicCategoryFunctionName": "أشغال التركيب الكهربائي و السباكة و أشغال التركيب الأخرى"
+  },
+  {
+    "id": "371",
+    "categoryFunctionName": "FABRICATION D'ARTICLES DE JOAILLERIE, BIJOUTERIE ET ARTICLES SIMILAIRES",
+    "arabicCategoryFunctionName": "صنع المجوهرات و الحلي و الأدوات المماثلة"
+  },
+  {
+    "id": "372",
+    "categoryFunctionName": "FABRICATION D'AUTRES PRODUITS MINERAUX NON METALLIQUES (VERRIERS, POTIERS, TAILLE)",
+    "arabicCategoryFunctionName": "صنع منتجات أخرى غير معدنية"
+  },
+  {
+    "id": "373",
+    "categoryFunctionName": "FABRICATION DE PRODUITS EN CAOUTCHOUC ET EN PLASTIQUE",
+    "arabicCategoryFunctionName": "صناعة منتوجات من المطاط و البلاستيك"
+  },
+  {
+    "id": "376",
+    "categoryFunctionName": "FABRICATION DE PEINTURES, VERNIS, ENCRES ET MASTICS",
+    "arabicCategoryFunctionName": "صنع الصباغة و البرنيق و الحبر و الصمغ"
+  },
+  {
+    "id": "387",
+    "categoryFunctionName": "ELEVE/ETUDIANT",
+    "arabicCategoryFunctionName": "تلميذ/طالب"
+  },
+  {
+    "id": "388",
+    "categoryFunctionName": "SANS PROFESSION",
+    "arabicCategoryFunctionName": "بدون"
+  },
+  {
+    "id": "389",
+    "categoryFunctionName": "RETRAITE",
+    "arabicCategoryFunctionName": "متقاعد"
+  },
+  {
+    "id": "401",
+    "categoryFunctionName": "PRODUCTION ET DISTRIBUTION D'ELECTRICITE, DE GAZ, DE VAPEUR ET D'AIR CONDITIONNE",
+    "arabicCategoryFunctionName": "إنتاج و توزيع الكهرباء و الغاز و البخار و الهواء المكيف"
+  },
+  {
+    "id": "408",
+    "categoryFunctionName": "COMMERCE",
+    "arabicCategoryFunctionName": "التجارة"
+  },
+  {
+    "id": "409",
+    "categoryFunctionName": "FABRICATION ARTISANALE",
+    "arabicCategoryFunctionName": "صنع حرفي"
+  },
+  {
+    "id": "411",
+    "categoryFunctionName": "AGRICULTURE, SYLVICULTURE ET PÊCHE",
+    "arabicCategoryFunctionName": "الفلاحة استغلال الغابات و صيد الأسماك"
+  },
+  {
+    "id": "414",
+    "categoryFunctionName": "ACTIVITES FINANCIERES ET D'ASSURANCES",
+    "arabicCategoryFunctionName": "الأنشطة المالية و أنشطة التأمين"
+  },
+  {
+    "id": "416",
+    "categoryFunctionName": "FEMMES AU FOYER",
+    "arabicCategoryFunctionName": "ربة بيت"
+  },
+  {
+    "id": "417",
+    "categoryFunctionName": "BIBLIOTHEQUES, ARCHIVES, MUSEES ET AUTRES ACTIVITES CULTURELLES",
+    "arabicCategoryFunctionName": "أنشطة المكتبات و دور المحفوظات و المتاحف و الأنشطة الثقافية الأخرى"
+  },
+  {
+    "id": "420",
+    "categoryFunctionName": "PRODUCTION ET DISTRIBUTION D'EAU, ASSAINISSEMENT, GESTION DES DECHETS ET DEPOLLUTION",
+    "arabicCategoryFunctionName": "إنتاج و توزيع الماء , التطهير , تدبير و معالجة النفايات"
+  },
+  {
+    "id": "390",
+    "categoryFunctionName": "INDUSTRIE EXTRACTIVE",
+    "arabicCategoryFunctionName": "صناعات استخراجية"
+  },
+  {
+    "id": "391",
+    "categoryFunctionName": "ADMINISTRATION PUBLIQUE",
+    "arabicCategoryFunctionName": "الإدارة العمومية"
+  },
+  {
+    "id": "407",
+    "categoryFunctionName": "INDUSTRIE MANUFACTURIERE",
+    "arabicCategoryFunctionName": "صناعات  تحويلية"
+  },
+  {
+    "id": "415",
+    "categoryFunctionName": "AUTRES SERVICES PERSONNELS ELECTRICIEN, MECANICIEN, COIFFEUR, BAINS,MENUISIER…",
+    "arabicCategoryFunctionName": "خدمات شخصية أخرى"
+  },
+  {
+    "id": "418",
+    "categoryFunctionName": "PROTECTION CIVILE",
+    "arabicCategoryFunctionName": "الوقاية المدنية"
+  },
+  {
+    "id": "300",
+    "categoryFunctionName": "ACTIVITES D''ARCHITECTURE ET D''INGENIERIE ; ACTIVITES DE CONTROLE ET ANALYSES TECHNIQUES",
+    "arabicCategoryFunctionName": "أنشطة الهندسة المعمارية و أنشطة المراقبة"
+  },
+  {
+    "id": "309",
+    "categoryFunctionName": "ACTIVITES COMPTABLES",
+    "arabicCategoryFunctionName": "أنشطة المحاسبة"
+  },
+  {
+    "id": "338",
+    "categoryFunctionName": "HEBERGEMENT (HOTELS, CAMPING, AUTRES)",
+    "arabicCategoryFunctionName": "الإيواء(فنادق,مخيمات و غيرها)"
+  },
+  {
+    "id": "342",
+    "categoryFunctionName": "ACTIVITES DES MENAGES",
+    "arabicCategoryFunctionName": "أنشطة التنظيف المنزلي"
+  },
+  {
+    "id": "356",
+    "categoryFunctionName": "INDUSTRIE DE PAPIER ET DU CARTON",
+    "arabicCategoryFunctionName": "صنع الورق و الورق المقوى"
+  },
+  {
+    "id": "379",
+    "categoryFunctionName": "REPARATION ET INSTALLATION DE MACHINES D'EQUIPEMENTS ",
+    "arabicCategoryFunctionName": "إصلاح و تركيب اللآلات و المعدات"
+  },
+  {
+    "id": "386",
+    "categoryFunctionName": "FORCES ARMEES ROYALES",
+    "arabicCategoryFunctionName": "القوات المسلحة الملكية"
+  },
+  {
+    "id": "410",
+    "categoryFunctionName": "CONSTRUCTION DE BATIMENTS, GENIE CIVIL ET TRAVAUX DE CONSTRUCTION SPECIALISES",
+    "arabicCategoryFunctionName": "تشييد المباني, الهندسة المدنية,و أنشطة المباني المتخصصة"
+  },
+  {
+    "id": "412",
+    "categoryFunctionName": "TRANSPORT ET ENTREPOSAGE",
+    "arabicCategoryFunctionName": "النقل و التخزين"
+  },
+  {
+    "id": "299",
+    "categoryFunctionName": "ACTIVITES SPECIALISEES, SCIENTIFIQUES ET TECHNIQUES",
+    "arabicCategoryFunctionName": "الأنشطة العلمية و التقنية المتخصصة"
+  },
+  {
+    "id": "301",
+    "categoryFunctionName": "INGENIEURS ET TECHNICIENS ASSIMILES",
+    "arabicCategoryFunctionName": "المهندسون و التقنيون"
+  },
+  {
+    "id": "310",
+    "categoryFunctionName": "ACTIVITES JURIDIQUES",
+    "arabicCategoryFunctionName": "الأنشطة القانونية"
+  },
+  {
+    "id": "394",
+    "categoryFunctionName": "FORCES AUXILIAIRES",
+    "arabicCategoryFunctionName": "القوات المساعدة"
+  },
+  {
+    "id": "395",
+    "categoryFunctionName": "SURETE NATIONALE",
+    "arabicCategoryFunctionName": "الأمن الوطني"
+  }
+]

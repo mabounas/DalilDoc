@@ -1,0 +1,22 @@
+[
+  {
+    "code": "DU_P",
+    "label": "Perte",
+    "arabicLabel": "فقدان"
+  },
+  {
+    "code": "DU_V",
+    "label": "Vol",
+    "arabicLabel": "سرقة"
+  },
+  {
+    "code": "DU_DET",
+    "label": "Détérioration",
+    "arabicLabel": "حالة تلف"
+  },
+  {
+    "code": "DU_RENEW",
+    "label": "Renouvellement",
+    "arabicLabel": "تجديد"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "slug": "a-qui-s-adresser",
+  "categorie": "procedures",
+  "langue": "fr",
+  "source_url": "https://www.cnie.ma/static/procedure/a-qui-s-adresser",
+  "titre": "A qui s'adresser ? - Portail CNIE.MA",
+  "blocks": [
+    {
+      "tag": "h3",
+      "depth": 0,
+      "text": "A qui s'adresser ?"
+    },
+    {
+      "tag": "h6",
+      "depth": 0,
+      "text": "Au niveau national, des Centres d'Enregistrement des Titres Identitaires (CEDI) sont dédiés au dépôt des demandes et au retrait des CNIE et des fiches anthropométriques. Ils sont rattachés aux préfectures de police, aux sûretés régionales et provinciales et aux commissariats de circonscription."
+    },
+    {
+      "tag": "h6",
+      "depth": 0,
+      "text": "Pour les Marocains Résidents à l'Étranger, ils doivent se rendre au service de la Carte Nationale auprès des représentations diplomatiques marocaines à l'étranger ou aux guichets spéciaux dédiés aux MRE au niveau des CEDI à travers le Royaume."
+    }
+  ],
+  "texte": "A qui s'adresser ?Au niveau national, des Centres d'Enregistrement des Titres Identitaires (CEDI) sont dédiés au dépôt des demandes et au retrait des CNIE et des fiches anthropométriques. Ils sont rattachés aux préfectures de police, aux sûretés régionales et provinciales et aux commissariats de circonscription.Pour les Marocains Résidents à l'Étranger, ils doivent se rendre au service de la Carte Nationale auprès des représentations diplomatiques marocaines à l'étranger ou aux guichets spéciaux dédiés aux MRE au niveau des CEDI à travers le Royaume.",
+  "sha256": "3bfbe4e639584dba0cf3899df687ce429c0ec82036bb3d0fe4a41c44040beb62",
+  "collecte_le": "2026-09-13T18:37:59.480623+00:00"
+}

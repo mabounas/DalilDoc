@@ -1,0 +1,10 @@
+{
+  "name": "WathiqaDoc — وثيقة دوك",
+  "short_name": "WathiqaDoc",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#0D0D20",
+  "theme_color": "#0D0D20",
+  "icons": [{ "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

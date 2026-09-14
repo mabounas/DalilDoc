@@ -1,0 +1,195 @@
+{
+  "source": "https://www.cnie.ma",
+  "editeur": "Direction Générale de la Sûreté Nationale (DGSN)",
+  "collecte_le": "2026-09-13T18:37:32.665149+00:00",
+  "api": [
+    {
+      "nom": "types_demande",
+      "source_url": "https://www.cnie.ma/cnie-api/configuration/requesttype/load",
+      "sha256": "1e8af1158c3d2a37d881270d5be020a174c1eaaf2c4804f665e1058e4ef6d1d4"
+    },
+    {
+      "nom": "motifs_duplicata",
+      "source_url": "https://www.cnie.ma/cnie-api/referentiel/motifduplicata/find",
+      "sha256": "6bbe1488a82dae93ec1aeb4d4c478806f7b1159c8f717b641589d0945a392814"
+    },
+    {
+      "nom": "types_profession",
+      "source_url": "https://www.cnie.ma/cnie-api/referentiel/typeprofession/find",
+      "sha256": "563142c953565e5cedf941ae5e47df0e1e86bde71a6de634128c79fb80992044"
+    }
+  ],
+  "i18n": [
+    {
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/assets/i18n/fr.json",
+      "sha256": "066470345688f3a71c5c3dd37f2895f85412f5beb87599dcba080beeaec64011"
+    },
+    {
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/assets/i18n/ar.json",
+      "sha256": "e2408400941018237188b224be3c63794a4d5e1edb65b9630d8733764c3a0296"
+    },
+    {
+      "langue": "en",
+      "source_url": "https://www.cnie.ma/assets/i18n/en.json",
+      "sha256": "1bcc6d21b623c9994e50c63a1d63c08e6e489c504b2decd8f325671d834e9104"
+    }
+  ],
+  "pages": [
+    {
+      "slug": "procedure",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "sha256": "fc211a258be7a38378eabce0396a1d7c3de37dd57152a9152343758d826828b0",
+      "collecte_le": "2026-09-13T18:37:52.353719+00:00"
+    },
+    {
+      "slug": "cnie-pour-mineur",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/procedure/cnie-pour-mineur",
+      "sha256": "4e277209c7f03f90df538cbc4e77e8d28f08bceaca17f4215ad84b6e24826acb",
+      "collecte_le": "2026-09-13T18:37:55.913075+00:00"
+    },
+    {
+      "slug": "a-qui-s-adresser",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/procedure/a-qui-s-adresser",
+      "sha256": "3bfbe4e639584dba0cf3899df687ce429c0ec82036bb3d0fe4a41c44040beb62",
+      "collecte_le": "2026-09-13T18:37:59.480623+00:00"
+    },
+    {
+      "slug": "frais-timbre",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/procedure/frais-timbre",
+      "sha256": "6d8e25baa8a2ddf20f32b6f3b56739359cd845a9d16986ee9a4b604f49731ec0",
+      "collecte_le": "2026-09-13T18:38:03.061783+00:00"
+    },
+    {
+      "slug": "normes-photographies",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/procedure/normes-photographies",
+      "sha256": "1e573872582657931f319c2a00452cdf968f5b67a4d29747aa50d03c7c12f9d5",
+      "collecte_le": "2026-09-13T18:38:06.637788+00:00"
+    },
+    {
+      "slug": "faq",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/faq",
+      "sha256": "32eb632065b34fb32003ccad71e936f08a5fa7c23b09b4078885a91b92f41254",
+      "collecte_le": "2026-09-13T18:38:11.203039+00:00"
+    },
+    {
+      "slug": "about",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/about",
+      "sha256": "6b4611891aa70d2b8ae477f1af8a8d92b7e8c49c3e43a6fc24f276fbbd8113ee",
+      "collecte_le": "2026-09-13T18:38:14.774556+00:00"
+    },
+    {
+      "slug": "reglementation",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/static/reglementation",
+      "sha256": "76175818f640ab66960c0c36430ae15ae5a64b741cc1bef884429072724196d6",
+      "collecte_le": "2026-09-13T18:38:18.328302+00:00"
+    },
+    {
+      "slug": "informations-pratiques",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/pages/practical-informations",
+      "sha256": "cb8571054eaf0db1e5ba0af0ab31be429b74b8c81cbf260f10f6ab2de325d468",
+      "collecte_le": "2026-09-13T18:38:21.908573+00:00"
+    },
+    {
+      "slug": "cas-particuliers",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/request-particular-cases",
+      "sha256": "b32393200b3f3d7f4aa88c6ca208734359d5d309ac2a4fc28aa99ea1c7a6186f",
+      "collecte_le": "2026-09-13T18:38:25.570066+00:00"
+    },
+    {
+      "slug": "types-demande",
+      "langue": "fr",
+      "source_url": "https://www.cnie.ma/request-select-type",
+      "sha256": "afe3f186a5b8f82404ac127104395310a609998675e054b426e367637ce6af26",
+      "collecte_le": "2026-09-13T18:38:29.230048+00:00"
+    },
+    {
+      "slug": "procedure",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/procedure",
+      "sha256": "47bff199c38601865504da6817ce47a7f6546fb06b00e9e554d5bb5fbf32fe5d",
+      "collecte_le": "2026-09-13T18:38:45.872239+00:00"
+    },
+    {
+      "slug": "cnie-pour-mineur",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/procedure/cnie-pour-mineur",
+      "sha256": "4e277209c7f03f90df538cbc4e77e8d28f08bceaca17f4215ad84b6e24826acb",
+      "collecte_le": "2026-09-13T18:38:49.435823+00:00"
+    },
+    {
+      "slug": "a-qui-s-adresser",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/procedure/a-qui-s-adresser",
+      "sha256": "d9b4a049f5217c53b428b96d78eb55ac2c83c69001e904329e75a508572473e2",
+      "collecte_le": "2026-09-13T18:38:52.999563+00:00"
+    },
+    {
+      "slug": "frais-timbre",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/procedure/frais-timbre",
+      "sha256": "c427b7e9618019d14a946bdb3e1b95f030af66aeee7398ae495ae769e6ccf30f",
+      "collecte_le": "2026-09-13T18:38:56.550840+00:00"
+    },
+    {
+      "slug": "normes-photographies",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/procedure/normes-photographies",
+      "sha256": "d1180753db18c9158048c98d0a8a4417f3b450008135697435489d19139a0e74",
+      "collecte_le": "2026-09-13T18:39:00.129044+00:00"
+    },
+    {
+      "slug": "faq",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/faq",
+      "sha256": "dd975b9500a6630251df20b2f5bf264ca884a3ab82abbb8935734b475c4c9b16",
+      "collecte_le": "2026-09-13T18:39:04.723994+00:00"
+    },
+    {
+      "slug": "about",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/about",
+      "sha256": "7284da50b2ea1f544de4740f4d0caed32cba632245940ec6319b1bf604cf048e",
+      "collecte_le": "2026-09-13T18:39:08.293558+00:00"
+    },
+    {
+      "slug": "reglementation",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/static/reglementation",
+      "sha256": "e948bc43eeea3e1e68221dfeb80ee816e7cf031bfa856a5c7fbf040ecaf6c0cc",
+      "collecte_le": "2026-09-13T18:39:11.858322+00:00"
+    },
+    {
+      "slug": "informations-pratiques",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/pages/practical-informations",
+      "sha256": "a318a7124694a6cc0ade412fe04a858448b81a3154bcc827c6477efdb1a6c4c1",
+      "collecte_le": "2026-09-13T18:39:15.447193+00:00"
+    },
+    {
+      "slug": "cas-particuliers",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/request-particular-cases",
+      "sha256": "cfed2a3ac1b1eed6b8e730f6876ea8081ac9e81982fae426aca67ddb5d37ec14",
+      "collecte_le": "2026-09-13T18:39:19.085878+00:00"
+    },
+    {
+      "slug": "types-demande",
+      "langue": "ar",
+      "source_url": "https://www.cnie.ma/request-select-type",
+      "sha256": "ea4c98d956dd546d50b2a187c536811ce1a2bdcbf57aec89a4ae2fdb054fc82c",
+      "collecte_le": "2026-09-13T18:39:22.693151+00:00"
+    }
+  ]
+}

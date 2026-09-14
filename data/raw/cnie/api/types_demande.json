@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1000,
+    "code": "NR",
+    "label": "Premier établissement",
+    "listRequestTypeBinaryDocumentTypeDto": null
+  },
+  {
+    "id": 1003,
+    "code": "DR",
+    "label": "Demande de renouvellement",
+    "listRequestTypeBinaryDocumentTypeDto": null
+  }
+]
