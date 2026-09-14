@@ -4,7 +4,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSpokenSegments, getVoiceCapabilities, synthesize, type QueryResult } from "@/lib/api";
 import { isRtl, T, type Lang } from "@/lib/i18n";
-import { speakWithBrowser, stopSpeaking } from "@/lib/speech";
+import { moroccanBrowserVoice, speakWithBrowser, stopSpeaking } from "@/lib/speech";
 
 interface Props {
   result: QueryResult;
@@ -68,6 +68,27 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
     const text = spokenText(result, lang);
     audioRef.current?.pause();
     stopSpeaking();
+    // Découpage en phrases fourni par l'API (identique au pré-chargement du cache).
+    let segments = [text];
+    if (result.demarche_id && result.documents.length && !result.hors_perimetre) {
+      try {
+        const { segments: fromApi } = await getSpokenSegments(result.demarche_id, lang);
+        if (fromApi?.length) segments = fromApi;
+      } catch {
+        segments = [text];
+      }
+    }
+    if (run !== runRef.current) return;
+
+    // Darija / arabe : une voix marocaine du navigateur (Edge) a la priorité sur ElevenLabs,
+    // dont les voix gratuites prononcent la darija avec un accent égyptien.
+    if (await moroccanBrowserVoice(lang)) {
+      if (run !== runRef.current) return;
+      setNeedsTap(false);
+      setVoiceMissing(!(await speakWithBrowser(segments, lang)));
+      return;
+    }
+
     let serverTts = false;
     try {
       serverTts = (await getVoiceCapabilities()).tts;
@@ -75,16 +96,6 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
       serverTts = false;
     }
     if (serverTts) {
-      // Découpage en phrases fourni par l'API (identique au pré-chargement du cache).
-      let segments = [text];
-      if (result.demarche_id && result.documents.length && !result.hors_perimetre) {
-        try {
-          const { segments: fromApi } = await getSpokenSegments(result.demarche_id, lang);
-          if (fromApi?.length) segments = fromApi;
-        } catch {
-          segments = [text];
-        }
-      }
       const audios = synthesizeAll(segments, lang);
       let played = 0;
       for (const pending of audios) {
@@ -116,7 +127,7 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
       if (played > 0) return;
     }
     // Uniquement une voix de la bonne langue : pas de lecture arabe par une voix française.
-    if (run === runRef.current) setVoiceMissing(!(await speakWithBrowser(text, lang)));
+    if (run === runRef.current) setVoiceMissing(!(await speakWithBrowser(segments, lang)));
   }, [result, lang]);
 
   useEffect(() => {

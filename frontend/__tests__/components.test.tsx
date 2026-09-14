@@ -190,6 +190,37 @@ test("Lecture bloquée par le navigateur : pas de faux message « voix indisponi
   await waitFor(() => expect(repeat.className).not.toContain("animate-pulse"));
 });
 
+test("Darija : la voix marocaine du navigateur (Edge) est prioritaire sur ElevenLabs", async () => {
+  const spoken: { text: string; lang: string }[] = [];
+  const voices = [
+    { lang: "ar-SA", name: "Microsoft Hamed" },
+    { lang: "ar-MA", name: "Microsoft Jamal Online (Natural) - Arabic (Morocco)" },
+  ];
+  Object.defineProperty(window, "speechSynthesis", {
+    configurable: true,
+    value: {
+      getVoices: () => voices,
+      cancel: jest.fn(),
+      speak: (u: { text: string; lang: string }) => spoken.push({ text: u.text, lang: u.lang }),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    },
+  });
+  (global as unknown as { SpeechSynthesisUtterance: unknown }).SpeechSynthesisUtterance = function (this: { text: string }, text: string) {
+    this.text = text;
+  };
+  mockedSegments.mockResolvedValue({ segments: ["لاكارط الوطنية — ضاعت", "الوراق اللي خاصك", "1. تصريح بالشرف"] });
+
+  render(<ResponseDisplay result={RESULT} lang="darija" question="ضاعت ليا لاكارط" onNewQuestion={jest.fn()} />);
+  await waitFor(() => expect(spoken).toHaveLength(3));
+  expect(spoken.every((s) => s.lang === "ar-MA")).toBe(true);
+  expect(spoken[2].text).toBe("1. تصريح بالشرف");
+  expect(mockedSynthesize).not.toHaveBeenCalled();
+  expect(screen.queryByText(/القراءة بالصوت ما متوفراش/)).toBeNull();
+
+  delete (window as unknown as { speechSynthesis?: unknown }).speechSynthesis;
+});
+
 test("IdleScreen reset après 30s inactivité", () => {
   jest.useFakeTimers();
   const onIdle = jest.fn();

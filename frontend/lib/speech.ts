@@ -135,20 +135,44 @@ function synth(): SpeechSynthesis | null {
   return typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis : null;
 }
 
-/** Les voix se chargent de façon asynchrone (Chrome, Edge). */
-export function loadVoices(timeoutMs = 1500): Promise<SpeechSynthesisVoice[]> {
+/**
+ * Les voix se chargent de façon asynchrone : Edge expose d'abord ses voix locales puis,
+ * un peu plus tard, ses voix neuronales en ligne (dont les voix marocaines). Si `wanted`
+ * est fourni, on attend qu'une voix correspondante apparaisse (jusqu'au délai).
+ */
+export function loadVoices(timeoutMs = 1500, wanted?: (v: SpeechSynthesisVoice) => boolean): Promise<SpeechSynthesisVoice[]> {
   const s = synth();
   if (!s) return Promise.resolve([]);
   const now = s.getVoices();
-  if (now.length) return Promise.resolve(now);
+  if (now.length && (!wanted || now.some(wanted))) return Promise.resolve(now);
   return new Promise((resolve) => {
-    const done = () => {
-      s.removeEventListener?.("voiceschanged", done);
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      s.removeEventListener?.("voiceschanged", onChange);
       resolve(s.getVoices());
     };
-    s.addEventListener?.("voiceschanged", done);
-    setTimeout(done, timeoutMs);
+    const onChange = () => {
+      const voices = s.getVoices();
+      if (voices.length && (!wanted || voices.some(wanted))) finish();
+    };
+    s.addEventListener?.("voiceschanged", onChange);
+    setTimeout(finish, timeoutMs);
   });
+}
+
+const isMoroccan = (v: VoiceLike) => v.lang.toLowerCase().replace("_", "-") === "ar-ma";
+
+/**
+ * Voix marocaine du navigateur (Edge : « Microsoft Jamal / Mouna Online (Natural) »).
+ * Prioritaire pour la darija et l'arabe : accent marocain, gratuite, sans crédit ElevenLabs.
+ * Le texte lu (réponse publique de la borne) est traité par le service vocal de Microsoft.
+ */
+export async function moroccanBrowserVoice(lang: Lang, timeoutMs = 1500): Promise<SpeechSynthesisVoice | null> {
+  if (lang !== "darija" && lang !== "ar") return null;
+  const voice = pickVoice(await loadVoices(timeoutMs, isMoroccan), lang);
+  return voice && isMoroccan(voice) ? voice : null;
 }
 
 /** Adapte le texte à l'oral (séparateurs arabes, symboles). */
@@ -159,18 +183,24 @@ export function toSpeech(text: string, lang: Lang): string {
   return out.replace(/\s{2,}/g, " ").trim();
 }
 
-/** Lit un texte avec une voix du navigateur de la bonne langue. Retourne false si aucune voix adaptée. */
-export async function speakWithBrowser(text: string, lang: Lang): Promise<boolean> {
+/**
+ * Lit un texte (ou une liste de phrases, lues à la suite) avec une voix du navigateur
+ * de la bonne langue. Retourne false si aucune voix adaptée.
+ * Phrase par phrase : les longues lectures du navigateur peuvent s'interrompre.
+ */
+export async function speakWithBrowser(text: string | string[], lang: Lang): Promise<boolean> {
   const s = synth();
   if (!s) return false;
-  const voice = pickVoice(await loadVoices(), lang);
+  const voice = (await moroccanBrowserVoice(lang)) ?? pickVoice(await loadVoices(), lang);
   if (!voice) return false;
   s.cancel();
-  const u = new SpeechSynthesisUtterance(toSpeech(text, lang));
-  u.voice = voice;
-  u.lang = voice.lang;
-  u.rate = 0.9;
-  s.speak(u);
+  for (const phrase of (Array.isArray(text) ? text : [text]).filter((t) => t.trim())) {
+    const u = new SpeechSynthesisUtterance(toSpeech(phrase, lang));
+    u.voice = voice;
+    u.lang = voice.lang;
+    u.rate = 0.9;
+    s.speak(u); // file d'attente du navigateur : lecture dans l'ordre
+  }
   return true;
 }
 
