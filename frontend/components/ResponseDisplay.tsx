@@ -1,9 +1,10 @@
 "use client";
 
 import { QRCodeSVG } from "qrcode.react";
-import { useCallback, useEffect, useRef } from "react";
-import { synthesize, type QueryResult } from "@/lib/api";
-import { isRtl, LANG_META, T, type Lang } from "@/lib/i18n";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { getVoiceCapabilities, synthesize, type QueryResult } from "@/lib/api";
+import { isRtl, T, type Lang } from "@/lib/i18n";
+import { speakWithBrowser, stopSpeaking } from "@/lib/speech";
 
 interface Props {
   result: QueryResult;
@@ -16,8 +17,9 @@ interface Props {
 export function spokenText(result: QueryResult, lang: Lang): string {
   if (result.hors_perimetre || !result.documents.length) return result.reponse;
   const t = T[lang];
-  const docs = result.documents.map((d, i) => `${d.ordre ?? i + 1}. ${d.nom}`).join(". ");
-  return `${result.reponse.split("\n")[0]}. ${t.requiredDocs} : ${docs}`;
+  const sep = isRtl(lang) ? "، " : ". ";
+  const docs = result.documents.map((d, i) => `${d.ordre ?? i + 1}. ${d.nom}`).join(sep);
+  return `${result.reponse.split("\n")[0]}${sep}${t.requiredDocs} : ${docs}`;
 }
 
 /** Affiche la réponse (≥ 24px), la lit à voix haute et propose Répéter / Nouvelle question / Imprimer. */
@@ -25,32 +27,39 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
   const t = T[lang];
   const rtl = isRtl(lang);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [voiceMissing, setVoiceMissing] = useState(false);
 
   const speak = useCallback(async () => {
     const text = spokenText(result, lang);
     audioRef.current?.pause();
+    stopSpeaking();
+    let serverTts = false;
     try {
-      const { audio, mime_type } = await synthesize(text.slice(0, 2000), lang);
-      const el = new Audio(`data:${mime_type};base64,${audio}`);
-      audioRef.current = el;
-      await el.play();
+      serverTts = (await getVoiceCapabilities()).tts;
     } catch {
-      // Repli : synthèse vocale du navigateur si ElevenLabs est indisponible.
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = LANG_META[lang].htmlLang;
-        u.rate = 0.9;
-        window.speechSynthesis.speak(u);
+      serverTts = false;
+    }
+    if (serverTts) {
+      try {
+        const { audio, mime_type } = await synthesize(text.slice(0, 2000), lang);
+        const el = new Audio(`data:${mime_type};base64,${audio}`);
+        audioRef.current = el;
+        await el.play();
+        setVoiceMissing(false);
+        return;
+      } catch {
+        // ElevenLabs en échec : repli sur les voix du navigateur.
       }
     }
+    // Uniquement une voix de la bonne langue : pas de lecture arabe par une voix française.
+    setVoiceMissing(!(await speakWithBrowser(text, lang)));
   }, [result, lang]);
 
   useEffect(() => {
     speak();
     return () => {
       audioRef.current?.pause();
-      if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+      stopSpeaking();
     };
   }, [speak]);
 
@@ -61,6 +70,7 @@ export default function ResponseDisplay({ result, lang, question, onNewQuestion 
     <section dir={rtl ? "rtl" : "ltr"} className="flex flex-1 flex-col gap-6" aria-live="polite">
       <p className="text-lg text-ink-muted">« {question} »</p>
       {result.offline && <p className="rounded-xl bg-night-700 px-4 py-2 text-lg text-gold">{t.offline}</p>}
+      {voiceMissing && <p className="no-print text-base text-ink-muted">🔇 {t.noVoice}</p>}
 
       {result.hors_perimetre ? (
         <div className="rounded-3xl border-2 border-gold bg-night-800 p-8 text-center">

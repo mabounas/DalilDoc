@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import binascii
 import logging
+import os
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import text
@@ -45,6 +46,12 @@ def query(req: QueryRequest, db: Session = Depends(get_db)) -> QueryResponse:
         db.rollback()
         log.error("Journalisation impossible : %s", exc)
     return QueryResponse(**{k: v for k, v in result.to_dict().items() if k in QueryResponse.model_fields})
+
+
+@router.get("/voice/capabilities")
+def voice_capabilities() -> dict:
+    """Moteurs vocaux côté serveur disponibles (la borne choisit sinon ceux du navigateur)."""
+    return {"stt": bool(os.getenv("OPENAI_API_KEY")), "tts": bool(os.getenv("ELEVENLABS_API_KEY"))}
 
 
 @router.post("/voice/transcribe", response_model=TranscribeResponse)

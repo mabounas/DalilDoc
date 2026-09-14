@@ -17,7 +17,7 @@ type Key =
   | "welcome" | "chooseLang" | "tapToSpeak" | "listening" | "stop" | "orType" | "useVoice" | "useKeyboard"
   | "send" | "placeholder" | "thinking" | "requiredDocs" | "optional" | "repeat" | "newQuestion" | "print"
   | "cost" | "source" | "scanQr" | "outOfScope" | "offline" | "error" | "micDenied" | "idleTitle" | "idleTouch"
-  | "examples" | "back";
+  | "examples" | "back" | "noSpeech" | "noVoice";
 
 export const T: Record<Lang, Record<Key, string>> = {
   fr: {
@@ -30,6 +30,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     error: "Service momentanément indisponible. Réessayez ou utilisez le clavier.",
     micDenied: "Micro indisponible : utilisez le clavier.", idleTitle: "Votre assistant administratif",
     idleTouch: "Touchez l'écran pour commencer", examples: "Exemples", back: "Langues",
+    noSpeech: "Je n'ai rien entendu. Touchez le micro et parlez.",
+    noVoice: "Lecture vocale indisponible pour cette langue sur cette borne.",
   },
   ar: {
     welcome: "مرحبا", chooseLang: "اختر لغتك", tapToSpeak: "اضغط على الميكروفون واطرح سؤالك", listening: "أنا أستمع…",
@@ -40,6 +42,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     offline: "وضع عدم الاتصال — معلومات محفوظة", error: "الخدمة غير متاحة حاليا. أعد المحاولة أو استعمل لوحة المفاتيح.",
     micDenied: "الميكروفون غير متاح: استعمل لوحة المفاتيح.", idleTitle: "مساعدك الإداري", idleTouch: "المس الشاشة للبدء",
     examples: "أمثلة", back: "اللغات",
+    noSpeech: "لم أسمع شيئا. اضغط على الميكروفون وتحدث.",
+    noVoice: "القراءة الصوتية غير متاحة لهذه اللغة على هذا الجهاز.",
   },
   darija: {
     welcome: "مرحبا بيك", chooseLang: "ختار اللغة ديالك", tapToSpeak: "ضغط على الميكرو وسول", listening: "كنسمع ليك…",
@@ -50,6 +54,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     offline: "بلا أنترنيت — معلومات محفوظة", error: "الخدمة ما خدامةش دابا. عاود ولا استعمل الكلافيي.",
     micDenied: "الميكرو ما خدامش: استعمل الكلافيي.", idleTitle: "المساعد الإداري ديالك", idleTouch: "قيس الشاشة باش تبدا",
     examples: "أمثلة", back: "اللغات",
+    noSpeech: "ما سمعت والو. ضغط على الميكرو وهضر.",
+    noVoice: "القراءة بالصوت ما متوفراش بهاد اللغة فهاد الجهاز.",
   },
   en: {
     welcome: "Welcome", chooseLang: "Choose your language", tapToSpeak: "Tap the microphone and ask your question",
@@ -60,6 +66,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     offline: "Offline mode — cached information", error: "Service temporarily unavailable. Try again or use the keyboard.",
     micDenied: "Microphone unavailable: use the keyboard.", idleTitle: "Your administrative assistant",
     idleTouch: "Touch the screen to start", examples: "Examples", back: "Languages",
+    noSpeech: "I didn't hear anything. Tap the microphone and speak.",
+    noVoice: "Voice playback is not available for this language on this kiosk.",
   },
   pt: {
     welcome: "Bem-vindo", chooseLang: "Escolha o seu idioma", tapToSpeak: "Toque no microfone e faça a sua pergunta",
@@ -71,6 +79,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     error: "Serviço temporariamente indisponível. Tente novamente ou use o teclado.",
     micDenied: "Microfone indisponível: use o teclado.", idleTitle: "O seu assistente administrativo",
     idleTouch: "Toque no ecrã para começar", examples: "Exemplos", back: "Idiomas",
+    noSpeech: "Não ouvi nada. Toque no microfone e fale.",
+    noVoice: "Leitura por voz indisponível para este idioma neste terminal.",
   },
   es: {
     welcome: "Bienvenido", chooseLang: "Elija su idioma", tapToSpeak: "Toque el micrófono y haga su pregunta",
@@ -82,6 +92,8 @@ export const T: Record<Lang, Record<Key, string>> = {
     error: "Servicio no disponible temporalmente. Inténtelo de nuevo o use el teclado.",
     micDenied: "Micrófono no disponible: use el teclado.", idleTitle: "Su asistente administrativo",
     idleTouch: "Toque la pantalla para empezar", examples: "Ejemplos", back: "Idiomas",
+    noSpeech: "No he oído nada. Toque el micrófono y hable.",
+    noVoice: "Lectura por voz no disponible para este idioma en este terminal.",
   },
 };
 

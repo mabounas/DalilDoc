@@ -5,13 +5,17 @@ import TextInput from "@/components/TextInput";
 import VoiceInput from "@/components/VoiceInput";
 import * as api from "@/lib/api";
 import { answerOffline, type OfflinePack } from "@/lib/offline";
+import { pickVoice, SilenceDetector, toSpeech } from "@/lib/speech";
 
 jest.mock("@/lib/api", () => ({
   ...jest.requireActual("@/lib/api"),
   synthesize: jest.fn(),
   transcribe: jest.fn(),
+  getVoiceCapabilities: jest.fn(),
 }));
 const mockedSynthesize = api.synthesize as jest.MockedFunction<typeof api.synthesize>;
+const mockedTranscribe = api.transcribe as jest.MockedFunction<typeof api.transcribe>;
+const mockedCaps = api.getVoiceCapabilities as jest.MockedFunction<typeof api.getVoiceCapabilities>;
 
 const push = jest.fn();
 jest.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
@@ -37,6 +41,8 @@ const RESULT: api.QueryResult = {
 
 beforeEach(() => {
   mockedSynthesize.mockReset();
+  mockedTranscribe.mockReset();
+  mockedCaps.mockReset().mockResolvedValue({ stt: true, tts: true });
   push.mockReset();
 });
 
@@ -68,6 +74,65 @@ test("VoiceInput démarre et arrête l'enregistrement", async () => {
   expect(instances[0].stop).toHaveBeenCalled();
   expect(stopTrack).toHaveBeenCalled();
   await waitFor(() => expect(screen.getByRole("button")).toHaveAttribute("aria-pressed", "false"));
+});
+
+test("VoiceInput sans Whisper : la reconnaissance du navigateur déclenche la question en fin de phrase", async () => {
+  mockedCaps.mockResolvedValue({ stt: false, tts: false });
+  const recs: Record<string, unknown>[] = [];
+  (window as unknown as { webkitSpeechRecognition: unknown }).webkitSpeechRecognition = jest.fn().mockImplementation(() => {
+    const rec = { start: jest.fn(), stop: jest.fn(), abort: jest.fn() } as Record<string, unknown>;
+    recs.push(rec);
+    return rec;
+  });
+  const onTranscript = jest.fn();
+  render(<VoiceInput lang="darija" onTranscript={onTranscript} />);
+  await act(async () => fireEvent.click(screen.getByRole("button")));
+  const rec = recs[0] as { lang: string; continuous: boolean; start: jest.Mock; onresult: (e: unknown) => void; onend: () => void };
+  expect(rec.start).toHaveBeenCalled();
+  expect(rec.lang).toBe("ar-MA");
+  expect(rec.continuous).toBe(false);
+
+  // L'usager parle puis se tait : résultat final puis « end », sans aucun clic.
+  act(() => rec.onresult({ results: { length: 1, 0: { isFinal: true, length: 1, 0: { transcript: "ضاعت ليا لاكارط" } } } }));
+  act(() => rec.onend());
+  expect(onTranscript).toHaveBeenCalledWith("ضاعت ليا لاكارط");
+  delete (window as unknown as { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition;
+});
+
+test("Détection de silence : fin du message après la parole, abandon sans parole", () => {
+  const vad = new SilenceDetector();
+  let now = 0;
+  const feed = (level: number, ms: number) => {
+    let state = "";
+    for (let t = 0; t < ms; t += 50) state = vad.update(level, (now += 50));
+    return state;
+  };
+  expect(feed(0.005, 250)).toBe("calibrating");
+  expect(feed(0.2, 800)).toBe("speaking"); // l'usager parle
+  expect(feed(0.005, 800)).toBe("speaking"); // courte pause dans la phrase
+  expect(feed(0.005, 600)).toBe("stop"); // silence > 1,3 s → envoi automatique
+  expect(vad.heardSpeech).toBe(true);
+
+  const quiet = new SilenceDetector();
+  let t2 = 0;
+  let state = "";
+  for (let i = 0; i < 160; i++) state = quiet.update(0.004, (t2 += 50));
+  expect(state).toBe("nospeech");
+  expect(quiet.heardSpeech).toBe(false);
+});
+
+test("Voix : jamais une voix d'une autre langue pour l'arabe / la darija", () => {
+  const voices = [
+    { lang: "fr-FR", name: "Microsoft Denise" },
+    { lang: "en-US", name: "Google US English" },
+  ];
+  expect(pickVoice(voices, "ar")).toBeNull();
+  expect(pickVoice(voices, "darija")).toBeNull();
+  const withArabic = [...voices, { lang: "ar-SA", name: "Microsoft Hamed" },
+    { lang: "ar-MA", name: "Microsoft Mouna Online (Natural) - Arabic (Morocco)" }];
+  expect(pickVoice(withArabic, "darija")?.lang).toBe("ar-MA");
+  expect(pickVoice(withArabic, "fr")?.name).toBe("Microsoft Denise");
+  expect(toSpeech("75 Dhs · 35x45 mm", "ar")).toBe("75 درهم، 35 × 45 mm");
 });
 
 test("TextInput supporte la saisie RTL arabe", () => {
@@ -109,7 +174,7 @@ test("IdleScreen reset après 30s inactivité", () => {
   jest.useRealTimers();
 });
 
-test("Mode hors ligne affiche cache local", () => {
+test("Mode hors ligne affiche cache local", async () => {
   const pack: OfflinePack = {
     demarches: [{ slug: "cin-perte-vol-deterioration", langue: "fr", titre: "CNIE — perte, vol ou détérioration", cout_mad: 75,
       source_url: "https://www.cnie.ma/static/procedure", documents: [RESULT.documents[0]] }],
@@ -123,4 +188,6 @@ test("Mode hors ligne affiche cache local", () => {
   mockedSynthesize.mockRejectedValue(new Error("offline"));
   render(<ResponseDisplay result={offline!} lang="fr" question="carte perdue" onNewQuestion={jest.fn()} />);
   expect(screen.getByText(/Mode hors ligne/)).toBeInTheDocument();
+  // Sans ElevenLabs ni voix française dans jsdom : message explicite plutôt qu'une lecture incohérente.
+  await waitFor(() => expect(screen.getByText(/Lecture vocale indisponible/)).toBeInTheDocument());
 });

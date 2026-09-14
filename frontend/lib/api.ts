@@ -56,5 +56,26 @@ export const transcribe = (audioBase64: string, langue: Lang, sessionId: string)
     30000,
   );
 
+export interface VoiceCapabilities {
+  stt: boolean;
+  tts: boolean;
+}
+
+const CAPS_TTL_MS = 5 * 60_000;
+let capsCache: { at: number; promise: Promise<VoiceCapabilities> } | null = null;
+
+/** Moteurs vocaux du serveur (Whisper / ElevenLabs), mis en cache 5 min. */
+export const getVoiceCapabilities = (): Promise<VoiceCapabilities> => {
+  if (!capsCache || Date.now() - capsCache.at > CAPS_TTL_MS) {
+    const promise = fetch(`${API_URL}/api/v1/voice/capabilities`).then(async (res) => {
+      if (!res.ok) throw new ApiError(res.status, await res.text());
+      return (await res.json()) as VoiceCapabilities;
+    });
+    promise.catch(() => { capsCache = null; });
+    capsCache = { at: Date.now(), promise };
+  }
+  return capsCache.promise;
+};
+
 export const synthesize = (text: string, langue: Lang) =>
   post<{ audio: string; mime_type: string }>("/api/v1/voice/synthesize", { text, langue, borne_id: BORNE_ID }, 15000);

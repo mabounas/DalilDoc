@@ -57,6 +57,7 @@ def test_voice_sans_cle(client):
     assert client.post("/api/v1/voice/transcribe", json={"audio": audio, "borne_id": "v"}).status_code == 503
     assert client.post("/api/v1/voice/transcribe", json={"audio": "@@not-base64@@", "borne_id": "v"}).status_code == 400
     assert client.post("/api/v1/voice/synthesize", json={"text": "Bonjour", "langue": "fr"}).status_code == 503
+    assert client.get("/api/v1/voice/capabilities").json() == {"stt": False, "tts": False}
 
 
 def test_concurrent_bornes(client):
