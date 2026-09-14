@@ -1,5 +1,8 @@
 # WathiqaDoc — déploiement multi-services (CDC §10, PROMPT 13)
 # Usage : cp .env.example .env && docker compose up -d --build
+#
+# Les ports sont liés à BIND_ADDR (127.0.0.1 par défaut) : Docker contourne ufw, un port
+# publié sur 0.0.0.0 serait exposé sur Internet. L'accès public passe par un reverse proxy.
 services:
   postgres:
     image: pgvector/pgvector:pg16
@@ -22,8 +25,6 @@ services:
     restart: unless-stopped
     volumes:
       - qdrant_storage:/qdrant/storage
-    ports:
-      - "127.0.0.1:6333:6333"
 
   redis:
     image: redis:7-alpine
@@ -51,29 +52,31 @@ services:
       redis:
         condition: service_started
     ports:
-      - "${API_PORT:-8000}:8000"
+      - "${BIND_ADDR:-127.0.0.1}:${API_PORT:-8000}:8000"
 
   frontend:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+        # Vide = appels relatifs /api, proxifiés par la borne vers le service api.
+        NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-}
+        API_INTERNAL_URL: http://api:8000
         NEXT_PUBLIC_KIOSK_MODE: "true"
         NEXT_PUBLIC_BORNE_ID: ${BORNE_ID:-borne-01}
     restart: unless-stopped
     depends_on: [api]
     ports:
-      - "${BORNE_PORT:-3000}:3000"
+      - "${BIND_ADDR:-127.0.0.1}:${BORNE_PORT:-3000}:3000"
 
   admin:
     build:
       context: ./admin
       args:
-        VITE_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+        VITE_API_URL: ${PUBLIC_API_URL:-}
     restart: unless-stopped
     depends_on: [api]
     ports:
-      - "${ADMIN_PORT:-3001}:3001"
+      - "${BIND_ADDR:-127.0.0.1}:${ADMIN_PORT:-3001}:3001"
 
 volumes:
   pgdata:

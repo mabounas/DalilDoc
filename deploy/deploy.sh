@@ -5,7 +5,10 @@
 #   bash deploy.sh
 #   (pas de « curl | bash » : sudo doit pouvoir demander le mot de passe sur le terminal)
 #
-# Variables optionnelles : API_PORT, BORNE_PORT, ADMIN_PORT, PUBLIC_HOST, APP_DIR, BRANCH
+# Variables optionnelles : API_PORT, BORNE_PORT, ADMIN_PORT, BIND_ADDR, APP_DIR, BRANCH
+#
+# Conçu pour un serveur partagé : aucun nettoyage Docker global, ports liés à 127.0.0.1,
+# builds séquentiels (RAM), aucune modification de nginx ni du pare-feu.
 #
 # Idempotent : relancer le script met à jour le code et reconstruit les conteneurs.
 # Les secrets (.env) sont générés au premier lancement puis conservés.
@@ -14,8 +17,8 @@ set -euo pipefail
 REPO_URL="${REPO_URL:-https://github.com/mabounas/DalilDoc.git}"
 APP_DIR="${APP_DIR:-/opt/wathiqadoc}"
 BRANCH="${BRANCH:-main}"
-API_PORT="${API_PORT:-8000}"; BORNE_PORT="${BORNE_PORT:-3000}"; ADMIN_PORT="${ADMIN_PORT:-3001}"
-PUBLIC_HOST="${PUBLIC_HOST:-$(curl -fsS4 --max-time 5 https://api.ipify.org || hostname -I | awk '{print $1}')}"
+API_PORT="${API_PORT:-8100}"; BORNE_PORT="${BORNE_PORT:-3100}"; ADMIN_PORT="${ADMIN_PORT:-3101}"
+BIND_ADDR="${BIND_ADDR:-127.0.0.1}"
 
 log() { printf '\n\033[1;33m==> %s\033[0m\n' "$*"; }
 
@@ -34,9 +37,9 @@ if ! docker info >/dev/null 2>&1; then DOCKER="sudo docker"; fi
 log "2/6 Espace disque"
 df -h / | tail -1
 AVAIL_KB=$(df -Pk / | awk 'NR==2 {print $4}')
-if [ "$AVAIL_KB" -lt 5000000 ]; then
-  echo "⚠ Moins de 5 Go libres : le build des images risque d'échouer. Nettoyage des images Docker inutilisées…"
-  $DOCKER system prune -af --volumes=false || true
+if [ "$AVAIL_KB" -lt 4000000 ]; then
+  # Pas de « docker system prune » : il supprimerait les images d'autres projets du serveur.
+  echo "✖ Moins de 4 Go libres : libérez de l'espace (ex. docker builder prune) puis relancez."; exit 1
 fi
 
 log "3/6 Code source ($BRANCH) dans $APP_DIR"
@@ -68,8 +71,9 @@ if [ ! -f .env ]; then
 API_PORT=${API_PORT}
 BORNE_PORT=${BORNE_PORT}
 ADMIN_PORT=${ADMIN_PORT}
-PUBLIC_API_URL=http://${PUBLIC_HOST}:${API_PORT}
-CORS_ORIGINS=http://${PUBLIC_HOST}:${BORNE_PORT},http://${PUBLIC_HOST}:${ADMIN_PORT}
+BIND_ADDR=${BIND_ADDR}
+# Vide : la borne et l'admin appellent l'API en relatif (/api) via leur propre proxy.
+PUBLIC_API_URL=
 BORNE_ID=borne-01
 EOF
   chmod 600 .env
@@ -87,8 +91,11 @@ for port in "$API_PORT" "$BORNE_PORT" "$ADMIN_PORT"; do
   fi
 done
 
-log "5/6 Build & démarrage des conteneurs"
-$DOCKER compose up -d --build --remove-orphans
+log "5/6 Build (séquentiel, pour ménager la RAM) & démarrage"
+for svc in api frontend admin; do
+  $DOCKER compose build "$svc"
+done
+$DOCKER compose up -d --remove-orphans
 
 log "6/6 Vérification"
 for i in $(seq 1 30); do
@@ -105,10 +112,11 @@ fi
 
 cat <<EOF
 
-✅ WathiqaDoc déployé
-   Borne        : http://${PUBLIC_HOST}:${BORNE_PORT}
-   Back-office  : http://${PUBLIC_HOST}:${ADMIN_PORT}
-   API (docs)   : http://${PUBLIC_HOST}:${API_PORT}/docs
+✅ WathiqaDoc déployé (écoute locale ${BIND_ADDR})
+   Borne        : http://${BIND_ADDR}:${BORNE_PORT}
+   Back-office  : http://${BIND_ADDR}:${ADMIN_PORT}
+   API (docs)   : http://${BIND_ADDR}:${API_PORT}/docs
+Accès public : ajoutez un vhost nginx (proxy_pass vers ces ports) + certbot.
 Sans clés API, le moteur tourne en mode local (recherche lexicale + réponse extractive).
 Ajoutez les clés dans $APP_DIR/.env puis relancez ce script pour activer Whisper/Claude/ElevenLabs.
 EOF
