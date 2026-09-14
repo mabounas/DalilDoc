@@ -7,14 +7,16 @@ FROM node:20-alpine AS build
 WORKDIR /app
 ARG NEXT_PUBLIC_API_URL=http://localhost:8000
 ARG NEXT_PUBLIC_KIOSK_MODE=true
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL NEXT_PUBLIC_KIOSK_MODE=$NEXT_PUBLIC_KIOSK_MODE NEXT_TELEMETRY_DISABLED=1
+ARG NEXT_PUBLIC_BORNE_ID=borne-01
+# Les variables NEXT_PUBLIC_* sont figées dans le bundle au moment du build.
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL NEXT_PUBLIC_KIOSK_MODE=$NEXT_PUBLIC_KIOSK_MODE NEXT_PUBLIC_BORNE_ID=$NEXT_PUBLIC_BORNE_ID NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
 FROM node:20-alpine
 WORKDIR /app
-ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public

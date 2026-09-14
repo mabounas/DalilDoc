@@ -12,7 +12,8 @@ services:
       POSTGRES_USER: ${DB_USER:-wathiqa}
       POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD requis}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-wathiqa} -d wathiqadoc"]
+      # -h 127.0.0.1 : le port TCP n'ouvre qu'après les scripts d'initialisation (migrations).
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U ${DB_USER:-wathiqa} -d wathiqadoc"]
       interval: 10s
       retries: 5
 
@@ -50,7 +51,7 @@ services:
       redis:
         condition: service_started
     ports:
-      - "8000:8000"
+      - "${API_PORT:-8000}:8000"
 
   frontend:
     build:
@@ -58,12 +59,11 @@ services:
       args:
         NEXT_PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
         NEXT_PUBLIC_KIOSK_MODE: "true"
+        NEXT_PUBLIC_BORNE_ID: ${BORNE_ID:-borne-01}
     restart: unless-stopped
-    environment:
-      NEXT_PUBLIC_BORNE_ID: ${BORNE_ID:-borne-01}
     depends_on: [api]
     ports:
-      - "3000:3000"
+      - "${BORNE_PORT:-3000}:3000"
 
   admin:
     build:
@@ -73,7 +73,7 @@ services:
     restart: unless-stopped
     depends_on: [api]
     ports:
-      - "3001:3001"
+      - "${ADMIN_PORT:-3001}:3001"
 
 volumes:
   pgdata:
