@@ -41,8 +41,28 @@ export function watchIdle(onIdle: () => void, timeout = IDLE_TIMEOUT): () => voi
   };
 }
 
+const SW_UPDATE_INTERVAL = 10 * 60_000;
+
+/**
+ * Enregistre le service worker et garde la borne à jour : une borne ne recharge
+ * jamais sa page, donc on vérifie les mises à jour périodiquement et, quand une
+ * nouvelle version prend la main, on recharge — uniquement sur l'écran d'accueil,
+ * jamais pendant qu'un citoyen utilise la borne.
+ */
 export function registerServiceWorker(): void {
-  if (typeof navigator !== "undefined" && "serviceWorker" in navigator && process.env.NODE_ENV === "production") {
-    navigator.serviceWorker.register("/sw.js").catch(() => undefined);
-  }
+  if (typeof navigator === "undefined" || !("serviceWorker" in navigator) || process.env.NODE_ENV !== "production") return;
+  const hadController = !!navigator.serviceWorker.controller;
+  let updatePending = false;
+
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (hadController) updatePending = true; // première installation : rien à recharger
+  });
+  navigator.serviceWorker
+    .register("/sw.js")
+    .then((reg) => setInterval(() => reg.update().catch(() => undefined), SW_UPDATE_INTERVAL))
+    .catch(() => undefined);
+
+  setInterval(() => {
+    if (updatePending && window.location.pathname === "/") window.location.reload();
+  }, 2000);
 }
