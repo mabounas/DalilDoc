@@ -1,4 +1,5 @@
 import type { Lang } from "./i18n";
+import { applyPronunciation } from "./pronunciation";
 
 /** Balises BCP-47 pour la reconnaissance et la synthèse du navigateur (borne au Maroc). */
 export const SPEECH_LANG: Record<Lang, string> = {
@@ -193,12 +194,13 @@ if (typeof window !== "undefined" && "speechSynthesis" in window) {
   });
 }
 
-/** Adapte le texte à l'oral (séparateurs arabes, symboles). */
+/** Adapte le texte à l'oral (séparateurs, symboles, prononciation darija). */
 export function toSpeech(text: string, lang: Lang): string {
   const rtl = lang === "ar" || lang === "darija";
-  let out = text.replace(/\s*·\s*/g, rtl ? "، " : ", ").replace(/(\d)\s*[x×]\s*(\d)/g, "$1 × $2").replace(/\n+/g, rtl ? "، " : ". ");
-  if (rtl) out = out.replace(/\bDhs\b|\bMAD\b/g, "درهم");
-  return out.replace(/\s{2,}/g, " ").trim();
+  let out = text.replace(/\s*·\s*/g, rtl ? "، " : ", ").replace(/\n+/g, rtl ? "، " : ". ");
+  if (rtl) out = applyPronunciation(out.replace(/\bDhs\b|\bMAD\b/g, "درهم"), lang);
+  else out = out.replace(/(\d)\s*[x×]\s*(\d)/g, "$1 × $2");
+  return out.replace(/(،\s*)+/g, "، ").replace(/\s{2,}/g, " ").replace(/^،\s*|\s*،\s*$/g, "").trim();
 }
 
 /**

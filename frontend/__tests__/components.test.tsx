@@ -136,7 +136,17 @@ test("Voix : jamais une voix d'une autre langue pour l'arabe / la darija", () =>
     { lang: "ar-MA", name: "Microsoft Mouna Online (Natural) - Arabic (Morocco)" }];
   expect(pickVoice(withArabic, "darija")?.lang).toBe("ar-MA");
   expect(pickVoice(withArabic, "fr")?.name).toBe("Microsoft Denise");
-  expect(toSpeech("75 Dhs · 35x45 mm", "ar")).toBe("75 درهم، 35 × 45 mm");
+  expect(toSpeech("75 Dhs · 35x45 mm", "ar")).toBe("75 درهم، 35 على 45 mm");
+});
+
+test("Prononciation darija : mots vocalisés, sigles et symboles lisibles, arabe standard intact", () => {
+  expect(toSpeech("ضاعت ليا لاكارط", "darija")).toBe("ضَاعْت لِيَّا لَاكَارْط");
+  expect(toSpeech("لاكارط الوطنية (CNIE) — أول مرة", "darija")).toBe("لَاكَارْط الوطنية — أول مرة");
+  expect(toSpeech("4 تصاور جداد، 35×45 ملم", "darija")).toBe("4 تْصَاوْر جْدَاد، 35 على 45 مِلِّيمِتْر");
+  expect(toSpeech("الوراق اللي خاصك", "darija")).toBe("الْوْرَاق اللِّي خَاصَّك");
+  // Arabe standard : pas de vocalisation darija (« الولي » y garde sa lecture standard).
+  expect(toSpeech("نسخة من بطاقة الولي", "ar")).toBe("نسخة من بطاقة الولي");
+  expect(toSpeech("Documents à fournir", "fr")).toBe("Documents à fournir");
 });
 
 test("TextInput supporte la saisie RTL arabe", () => {
